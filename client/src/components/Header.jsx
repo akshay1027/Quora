@@ -8,8 +8,11 @@ import LanguageIcon from '@material-ui/icons/Language';
 
 const Header = () => {
     return(
-        <h1>Header</h1>
+        <div className="header">
+
+        </div>
+            
     )
-};
+}; 
 
 export default Header;
