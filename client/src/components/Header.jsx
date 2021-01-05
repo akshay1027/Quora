@@ -7,6 +7,7 @@ import QuestionAnswerIcon from '@material-ui/icons/QuestionAnswer';
 import LanguageIcon from '@material-ui/icons/Language';
 import SearchIcon from '@material-ui/icons/Search';
 import { Avatar } from "@material-ui/core";
+import "../StyleSheet/Header.css";
 
 const Header = () => {
     return(
@@ -17,7 +18,7 @@ const Header = () => {
          <div className="header_left">
 
             <div className="left_logo">
-                   <h4 className="company logo"></h4>
+                   <h4 className="company logo">PEC Quora</h4>
             </div>
             <div className="left_home">
                 <HomeIcon />
