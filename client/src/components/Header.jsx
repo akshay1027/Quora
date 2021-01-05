@@ -10,6 +10,8 @@ import { Avatar } from "@material-ui/core";
 import "../StyleSheet/Header.css";
 
 const Header = () => {
+
+    const window = window.location.href
     return(
         <div className="header">
 
@@ -18,7 +20,7 @@ const Header = () => {
          <div className="header_left">
 
             <div className="left_logo">
-                   <h4 className="company logo">PEC Quora</h4>
+                   <h4 alt="PEC logo" className="left_logotext" >PEC Quora</h4>
             </div>
             <div className="left_home">
                 <HomeIcon />

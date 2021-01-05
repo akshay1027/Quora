@@ -2,3 +2,23 @@
   display: flex;
   align-items: center;
 }
+
+.header_left {
+  display: flex;
+  align-items: center;
+}
+/*.left_logo {
+  width: 70%;
+}
+
+.left_logotext {
+  width: 100%;
+}
+*/
+
+.left_home,
+.left_notification {
+  display: flex;
+  align-items: center;
+  margin-left: 0.6em;
+}
