@@ -27,11 +27,11 @@ const Header = () => {
                 <HomeIcon />
                 <h4>Home</h4>
             </div>
-            <div className="left_notification">
+            <div className={`left_notification ${location === "http://localhost:3000/notifications" ? "current-location" : null} `}>
                 <NotificationsIcon />
                 <h4>Notifications</h4>
             </div>
-        
+         
           </div>
 
            {/*center side */}
