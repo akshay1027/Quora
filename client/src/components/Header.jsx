@@ -11,7 +11,8 @@ import "../StyleSheet/Header.css";
 
 const Header = () => {
 
-    const window = window.location.href
+    const location = window.location.href;
+    alert(location);
     return(
         <div className="header">
 
@@ -22,7 +23,7 @@ const Header = () => {
             <div className="left_logo">
                    <h4 alt="PEC logo" className="left_logotext" >PEC Quora</h4>
             </div>
-            <div className="left_home">
+            <div className={`left_home ${location === "http://localhost:3000/" ? "current-location" : null}`}>
                 <HomeIcon />
                 <h4>Home</h4>
             </div>

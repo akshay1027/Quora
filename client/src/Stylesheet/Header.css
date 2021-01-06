@@ -22,3 +22,8 @@
   align-items: center;
   margin-left: 0.6em;
 }
+
+.current-location {
+  color: crimson;
+  border-bottom: 1px solid crimson;
+}
