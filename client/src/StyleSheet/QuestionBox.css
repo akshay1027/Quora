@@ -1,0 +1,35 @@
+.QuestionBox {
+  display: flex;
+  flex-direction: column;
+  margin-top: 5em;
+  border: 1px solid lightgray;
+  width: 80%;
+  margin: 0 auto;
+  background-color: white;
+  box-shadow: 1.5rem 1.4rem 2rem lightgray;
+  padding: 0.4em 1.5em;
+}
+
+.questionBox_user {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1.5em;
+  margin-top: 1.5em;
+}
+
+.QuestionBox_inputfield {
+  margin-bottom: 2em;
+  border: none;
+  font-weight: 700;
+  font-size: medium;
+}
+
+.QuestionBox_inputfield::placeholder {
+  font-weight: 500;
+  font-size: medium;
+}
+
+.user_username {
+  margin-left: 0.7em;
+  color: rgb(170, 166, 166);
+}
