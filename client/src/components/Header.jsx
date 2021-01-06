@@ -6,13 +6,13 @@ import GroupAddIcon from '@material-ui/icons/GroupAdd';
 import QuestionAnswerIcon from '@material-ui/icons/QuestionAnswer';
 import LanguageIcon from '@material-ui/icons/Language';
 import SearchIcon from '@material-ui/icons/Search';
-import { Avatar } from "@material-ui/core";
+import Avatar from "@material-ui/core/Avatar";
 import "../StyleSheet/Header.css";
 
 const Header = () => {
 
     const location = window.location.href;
-    alert(location);
+
     return(
         <div className="header">
 
@@ -31,13 +31,14 @@ const Header = () => {
                 <NotificationsIcon />
                 <h4>Notifications</h4>
             </div>
-         
           </div>
 
            {/*center side */}
 
            <div className="header_center">
-               <input type="text" placeholder="search" />
+               <input type="text" 
+               placeholder="search"
+               className="center_inputfield" />
                <SearchIcon />
            </div>
 
@@ -47,8 +48,8 @@ const Header = () => {
                <div className="right_user">
                    <Avatar src=" " alt="user profile" />
                </div>
-               <LanguageIcon />
-               <button>Ask Questions</button>
+               <LanguageIcon className="right_icon"/>
+               <button className="right_btn">Ask Questions</button>
            </div>
 
         </div>
