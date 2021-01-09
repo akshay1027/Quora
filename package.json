@@ -11,9 +11,9 @@
       "dev": "nodemon --exec babel-node server.js"
   },
   "dependencies": {
-    "@babel/core": "^7.12.10",
-    "@babel/node": "^7.12.10",
-    "@babel/preset-env": "^7.12.11",
+    "@babel/core": "^7.12.9",
+    "@babel/node": "^7.12.6",
+    "@babel/preset-env": "^7.12.7",
     "bcrypt": "^5.0.0",
     "cloudinary": "^1.23.0",
     "cors": "^2.8.5",
