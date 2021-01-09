@@ -6,6 +6,10 @@
   "repository": "https://github.com/akshay1027/pecquora.git",
   "author": "akshay1027 <akshayar1027@gmail.com>",
   "license": "MIT",
+  "scripts": {
+      "start": "babel-node server.js",
+      "dev": "nodemon --exec babel-node server.js"
+  },
   "dependencies": {
     "@babel/core": "^7.12.10",
     "@babel/node": "^7.12.10",
