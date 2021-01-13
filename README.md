@@ -4,7 +4,7 @@
 <h2> Backend dependencies: </h3>
 <h4> yarn add @babel/node @babel/preset-env @babel/core express mongoose formidable cors dotenv cloudinary bcrypt express-session connect-mongodb-session && yarn add -D nodemon </h4>
 
-<h2> Uses of these dependencies (in layman's terms):<h2><br />
+<h2> Uses of these dependencies (in layman's terms):<h2>
      <h4>babel: we can use ES6 and Jsx in react.js <br />
      express : server <br />
      mongoose : Database <br />
