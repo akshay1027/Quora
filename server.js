@@ -1,5 +1,5 @@
 import express from "express";
-import mongoose from "mongoose";
+import mongoose, { mongo } from "mongoose";
 import cors from "cors";
 import dotenv from "dotenv";
 import expressSession from "express-session";
@@ -9,7 +9,7 @@ dotenv.config();
 
 const app = express();
 
-//============= middleware==========
+//================middleware==========
 
 //cors
 
@@ -55,3 +55,27 @@ app.use(expressSession({
 // its important to store it in dotenv(best practises).
 // store:store( const store) connnects mongodb to express server.
 // secure:process.env.NODE_ENV==="production" - this will return true or false
+
+
+//=========================================MongoDb config for application==================================
+const mongoDB_connectionOptions ={
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+    useCreateIndex: true,
+}
+
+mongoose.connect(mongoURI, mongoDB_connectionOptions, (error) => {
+    if(error) {
+        return console.error(error);
+    }
+
+    console.log("mongoDB working succesfully");
+});
+
+//==========================================Express cofig======================================================
+const PORT = process.env.PORT || 5000;
+
+app.listen(PORT, ()=>{
+    console.log(`server started at PORT ${PORT}`);
+})
+   
