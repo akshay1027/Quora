@@ -22,13 +22,14 @@ app.use(
 
 //database to store session
 
-const MongoStore = MongoStore(expressSession);
+const mongoStore = MongoStore(expressSession);
 const mongoURI = process.env.mongoURI;
-const store = new mongoose({
+const store = new mongoStore({
     collection:"usersessions",
     uri:mongoURI,
     expires: 7 * 60 * 60 * 24 * 1000,
 })
+
 
 // expires above indicates date of expiration of the session. 
 // Here it expires after 7 days
