@@ -1,6 +1,6 @@
 <h1> Pec Quora </h1>
 <h1> Pec Quora is a Question and Answer based website for my college Pondicherry Technological University (formerly PEC). </h1>
-
+<br>
 <h2> Backend dependencies : </h3>
 <h4> yarn add @babel/node @babel/preset-env @babel/core express mongoose formidable cors dotenv cloudinary bcrypt express-session connect-mongodb-session && yarn add -D nodemon </h4>
 
@@ -15,7 +15,7 @@
      bcrypt : hashing passwords <br />
      nodemon : hot realoading of server <br />
      express-session, connect-mongodb-session : session handeling </h4>
- <hr>
+
  <h2> start backend/server : yarn run dev <h2>
- <hr>
+ 
  <h2> start frontend/client : yarn start <h2>
