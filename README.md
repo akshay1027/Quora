@@ -1,11 +1,11 @@
 <h1> Pec Quora </h1>
 <h1> Pec Quora is a Question and Answer based website for my college Pondicherry Technological University (formerly PEC). </h1>
 
-<h3> Backend dependencies: </h3>
+<h2> Backend dependencies: </h3>
 <h4> yarn add @babel/node @babel/preset-env @babel/core express mongoose formidable cors dotenv cloudinary bcrypt express-session connect-mongodb-session && yarn add -D nodemon </h4>
 
-<h4> Uses of these dependencies (in layman's terms):<br />
-     babel: we can use ES6 and Jsx in react.js <br />
+<h2> Uses of these dependencies (in layman's terms):<h2><br />
+     <h4>babel: we can use ES6 and Jsx in react.js <br />
      express : server <br />
      mongoose : Database <br />
      formidable : body parsing <br />
@@ -15,4 +15,9 @@
      bcrypt : hashing passwords <br />
      nodemon : hot realoading of server <br />
      express-session, connect-mongodb-session : session handeling </h4>
-     
+
+ <h2> start backend/server: <h2>    
+ <h4> yarn run dev <h4>
+
+ <h2> start frontend/client: <h2>
+ <h4> yarn start <h4>
