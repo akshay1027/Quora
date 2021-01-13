@@ -34,9 +34,24 @@ const store = new mongoose({
 // Here it expires after 7 days
 // mongoURI - links application and mongo atlas(DataBase)
 
-//express code to store seesion to database automatically when 
+// express code to store seesion to database automatically when 
 // session is made.
 
 app.use(expressSession({
-    name
+    name:'_sid',
+    secret:process.env.session_secret,
+    resave:false,
+    saveUninitialized:false,
+    store:store,
+    cookie:{
+        httpOnly:true,
+        secure:process.env.NODE_ENV==="production",
+        maxAge:7 * 60 * 60 * 24 * 1000,
+        sameSite:false,
+    }
 }))
+
+// secret is password that only me and my server will know.
+// its important to store it in dotenv(best practises).
+// store:store( const store) connnects mongodb to express server.
+// secure:process.env.NODE_ENV==="production" - this will return true or false
