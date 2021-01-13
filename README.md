@@ -15,9 +15,9 @@
      bcrypt : hashing passwords <br />
      nodemon : hot realoading of server <br />
      express-session, connect-mongodb-session : session handeling </h4>
-
- <h2> start backend/server: <h2>    
- <h4> yarn run dev <h4>
-
- <h2> start frontend/client: <h2>
- <h4> yarn start <h4>
+ <hr>
+ <h2> start backend/server:    
+  yarn run dev <h2>
+ <hr>
+ <h2> start frontend/client: 
+  yarn start <h2>
