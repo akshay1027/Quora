@@ -10,7 +10,8 @@ import Avatar from "@material-ui/core/Avatar";
 import "../StyleSheet/Header.css";
 
 const Header = () => {
-
+    
+    // to get window location!
     const location = window.location.href;
 
     return(
