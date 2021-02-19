@@ -8,7 +8,7 @@
      <h4>babel: we can use ES6 and Jsx in react.js <br />
      express : server <br />
      mongoose : Database <br />
-     formidable : body parsing <br />
+     formidable : body parsing, Image parsing as well( which body-parser cant do)<br />
      cors : control interaction with server <br />
      dotenv : hide API keys <br />
      cloudinary : potential file uploads <br />
