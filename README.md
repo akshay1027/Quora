@@ -11,8 +11,8 @@
      formidable : body parsing, Image parsing as well( which body-parser cant do)<br />
      cors : control interaction with server <br />
      dotenv : hide API keys <br />
-     cloudinary : potential file uploads <br />
-     bcrypt : hashing passwords <br />
+     cloudinary : image uploads and returns url <br />
+     bcrypt : hashing/encrypting passwords (Eg:ceaser cipher) <br />
      nodemon : hot realoading of server <br />
      express-session, connect-mongodb-session : session handeling </h4>
 

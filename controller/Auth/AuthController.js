@@ -21,12 +21,15 @@ class AuthController{
 
         const form = new formidable.IncomingForm();
 
+        // use try catch becoz it returns error 
+        //when the server is down but the try logic is correct
+        // status(500) indicates internal server error
         try {
 
         } catch(error){
             return response
             .status(500)
-            .json({ message: "Server currently down, try later"});
+            .json({ msg: "Server currently down, try later"});
         }
     }
 }
