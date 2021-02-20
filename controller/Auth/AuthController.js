@@ -107,11 +107,11 @@ class AuthController{
                         .status(201)
                         .json({ msg:"New account has been created"})
 
-                });
+                }); // close cloudniary
                
-            });
+            }); // close formidable 
 
-        } 
+        } // close try
         
         catch(error){
             return response
@@ -122,5 +122,105 @@ class AuthController{
         // when the server is down but the try logic is correct.
         // status(500) indicates internal server error
 
+    }
+    
+    // --------------------Login logic-----------------------------------------------
+    
+    /* 
+       FLOW:
+       1) Parse using formidable
+       2) Destructure request
+       3) username, password validation
+       4) check password with harshed password in db
+       5) check if session is present 
+       6) catch method 
+
+    */
+    Login(request,response){
+        
+        // getting data using formidable
+
+        const form= new formidable.IncomingForm();
+
+        try {
+            
+            form.parse(request, async (error, fields, files)=>{
+                if(error){
+                    console.error(error);
+                    return response
+                        .status(500)
+                        .json({ msg: "Network Error: Failed to register, try again later."});
+                }
+
+                //destructure incoming data
+
+                const { username, password } = fields;
+                const { image } = files;
+
+                //required + validation 
+
+                if(!username || !password) {
+                    return response
+                        .status(400)
+                        .json({ msg:"All fields are required"});
+                }
+                
+                const isUserExisting = await userModel.findOne({ username: username});
+                
+                // if user doesnot exists, return error
+
+                if(!isUserExisting){
+                    return response
+                        .status(404)
+                        .json({ msg:"Account with this username doesnot exists"});
+                }
+
+                // check entered password with hashed password
+
+                const hashedPassword = isUserExisting.password;
+                const isPasswordValid = await Bcrypt.compare(password, hashedPassword);
+
+                if(!isPasswordValid) {
+                    return response
+                        .status(400)
+                        .json({msg:"Invalid/Wrong password"})
+                }
+
+                // check if this username has session already
+                // because we dont want to create another session
+                /*
+                   express session structure Eg:
+
+                   {
+                       expires:'',
+                       session:{
+                           cookie,
+                           user:{username}
+                       }
+                   }
+                    
+                   use above eg to find users session by using findOne
+                */
+                const isUserSessionExisting = await userSessions.findOne({'session.user.username': username})
+
+                if(isUserSessionExisting){
+                    return response
+                        .status(200)
+                        .json({"Already signed in"})
+                }
+
+                // when user doesnot have session
+
+                request.session.user ={username:isUserSessionExisting.username, id:isUserExisting._id}
+                response.status(200).send(request.session)
+                
+        }); // close formidable 
+
+    } // close try
+        catch(error) {
+            return response
+                .status(500)
+                .json({ msg: "Server currently down, try later"});
+        }
     }
 }
