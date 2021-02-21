@@ -136,6 +136,7 @@ class AuthController{
        6) catch method 
 
     */
+
     Login(request,response){
         
         // getting data using formidable
@@ -206,14 +207,14 @@ class AuthController{
                 if(isUserSessionExisting){
                     return response
                         .status(200)
-                        .json({"Already signed in"})
+                        .json({msg:"Already signed in"})
                 }
 
                 // when user doesnot have session
 
                 request.session.user ={username:isUserSessionExisting.username, id:isUserExisting._id}
                 response.status(200).send(request.session)
-                
+
         }); // close formidable 
 
     } // close try
@@ -224,3 +225,5 @@ class AuthController{
         }
     }
 }
+
+export default AuthController;
