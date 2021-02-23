@@ -20,9 +20,11 @@ cloudinary.config ({
 
 class AuthController{
     
-    // signup logic
 
-    signup(request,response) {
+    //-----------------------signup logic----------------------------------
+
+
+    SignUp(request,response) {
         
         const form = new formidable.IncomingForm();
 
@@ -43,7 +45,7 @@ class AuthController{
 
                 //required + validation 
 
-                if(!username || !password) {
+                if(!username || !password ||!image) {
                     return response
                         .status(400)
                         .json({ msg:"All fields are required"});
@@ -124,8 +126,12 @@ class AuthController{
 
     }
     
-    // --------------------Login logic-----------------------------------------------
+     
+
+    // ------------------------------Login logic----------------------------------
     
+
+
     /* 
        FLOW:
        1) Parse using formidable
@@ -224,6 +230,30 @@ class AuthController{
                 .json({ msg: "Server currently down, try later"});
         }
     }
+
+
+    //-----------------------------
+
+    isLoggedIn(request, response) {
+        const userSession = request.session || false;
+    
+        try {
+          if (userSession) {
+            return response
+              .status(200)
+              .json({
+                auth_status: true,
+                profileImage: userSession.user.profileImage,
+              });
+          }
+    
+          return response.status(200).json({ auth_status: false });
+        } catch (error) {
+          return response.status(500, {
+            msg: "Server Error: Server currently down try again later",
+          });
+        }
+      }
 }
 
 export default AuthController;
