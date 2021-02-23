@@ -1,17 +1,17 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import TextField from '@material-ui/core/TextField';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-import Checkbox from '@material-ui/core/Checkbox';
-import {Link} from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import Grid from '@material-ui/core/Grid';
 import Box from '@material-ui/core/Box';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
+import axios from "axios";
+
 
 function Copyright() {
   return (
@@ -47,6 +47,37 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function SignUp() {
+
+    const [username, setUsername] = useState("");
+    const [password, setPassword] = useState("");
+    const [image, setImage] = useState("");
+    const history = useHistory();
+    const SignUpUser = async (e) => {
+      e.preventDefault();
+  
+      const form_data = new FormData();
+      form_data.append("username", username);
+      form_data.append("password", password);
+      form_data.append("image", image);
+  
+      const url = "http://localhost:5000/signup";
+  
+      try {
+        const response = await axios.post(url, form_data, {
+          withCredentials: true,
+        });
+        console.log(response);
+        const { data, status } = response;
+  
+        if (status === 201) {
+          alert(data.msg);
+          history.push("/signin");
+        }
+      } catch (error) {
+        alert(error.response.data.msg);
+      }
+    };
+    
   const classes = useStyles();
 
   return (
@@ -60,16 +91,17 @@ export default function SignUp() {
           Sign up
         </Typography>
         <form className={classes.form} noValidate>
-          <TextField
+        <TextField
             variant="outlined"
             margin="normal"
             required
             fullWidth
-            id="email"
-            label="Email Address"
-            name="email"
-            autoComplete="email"
+            id="username"
+            label="User name"
+            name="username"
+            autoComplete="username"
             autoFocus
+            onChange={(e) => setUsername(e.target.value)}
           />
           <TextField
             variant="outlined"
@@ -81,23 +113,23 @@ export default function SignUp() {
             type="password"
             id="password"
             autoComplete="current-password"
+            onChange={(e) => setPassword(e.target.value)}
           />
-          <FormControlLabel
-            control={<Checkbox value="remember" color="primary" />}
-            label="Remember me"
-          />
+          <label style={{marginRight:"5px", fontWeight:"700"}}>Select Profile Image:</label>
+          <input type="file" onChange={(e) => setImage(e.target.files[0])} />
           <Button
             type="submit"
             fullWidth
             variant="contained"
             color="primary"
             className={classes.submit}
+            onClick={SignUpUser}
           >
             Sign up
           </Button>
           <Grid container>
             <Grid item>
-              <Link to="#" variant="body2">
+              <Link to="/signin" variant="body2">
                 {"Already have an account? Sign In"}
               </Link>
             </Grid>
