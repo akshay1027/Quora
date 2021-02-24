@@ -7,7 +7,7 @@ import Bcrypt from "bcrypt";
 
 dotenv.config();
 
-//----------------cloudinary setup-------------------
+//------------------cloudinary setup-------------------
 const cloudinary = Cloudinary.v2;
 
 cloudinary.config ({
@@ -16,7 +16,7 @@ cloudinary.config ({
     api_secret: process.env.api_secret,
 });
 
-//----------------class method to follow OOPs-------------------
+//------------------class method to follow OOPs-------------------
 
 class AuthController{
     
