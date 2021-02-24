@@ -18,7 +18,7 @@ function Copyright() {
     <Typography variant="body2" color="textSecondary" align="center">
       {'Copyright © '}
       <Link color="inherit" to="https://material-ui.com/">
-        PEC Quora
+        PECQuora
       </Link>{' '}
       {new Date().getFullYear()}
       {'.'}
