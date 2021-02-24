@@ -21,7 +21,7 @@ cloudinary.config ({
 class AuthController{
     
 
-    //-----------------------signup logic----------------------------------
+    //-------------------------signup logic----------------------------------
 
 
     SignUp(request,response) {
