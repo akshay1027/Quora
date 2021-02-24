@@ -16,7 +16,7 @@ cloudinary.config ({
     api_secret: process.env.api_secret,
 });
 
-//------------------class method to follow OOPs-------------------
+//--------------------class method to follow OOPs-------------------
 
 class AuthController{
     
