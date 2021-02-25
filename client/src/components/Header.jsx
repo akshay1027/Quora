@@ -9,7 +9,8 @@ import SearchIcon from '@material-ui/icons/Search';
 import Avatar from "@material-ui/core/Avatar";
 import "../StyleSheet/Header.css";
 
-const Header = () => {
+  const [authStatus, setAuthStatus] = useState(false);
+const Header = ({profileImage}) => {
     
     // to get window location!
     const location = window.location.href;
@@ -47,7 +48,7 @@ const Header = () => {
 
            <div className="header_right">
                <div className="right_user">
-                   <Avatar src=" " alt="user profile" />
+                   <Avatar src={profileImage} alt="user profile" />
                </div>
                <LanguageIcon className="right_icon"/>
                <button className="right_btn">Ask Questions</button>
