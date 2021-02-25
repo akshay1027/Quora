@@ -9,8 +9,7 @@ import SearchIcon from '@material-ui/icons/Search';
 import Avatar from "@material-ui/core/Avatar";
 import "../StyleSheet/Header.css";
 
-  const [authStatus, setAuthStatus] = useState(false);
-const Header = ({profileImage}) => {
+  const Header = ({profileImage}) => {
     
     // to get window location!
     const location = window.location.href;
