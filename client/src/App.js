@@ -19,12 +19,23 @@ const App = () =>  {
   // whenever anything happens in the "App", useEffect is triggered.
 
   useEffect(()=>{
+    
+    const url="http://localhost:5000/isLoggedIn";
 
-  })
+    axios
+        .get(url, {withCredentials: true})
+        .then((response)=>{
+            setAuthStatus(response.data.authStatus);
+            setProfileImage(response.data.profileImage);
+        })
+        .catch((error)=>{
+            console.log(error);
+        });
+  });
 
   return (
     <Router className="App">
-      <Header /> {/* header will be present in all pages */}
+      <Header profileImage={profileImage}/> {/* header will be present in all pages */}
       <Switch>
           <Route path="/signin">
             <SignIn />
@@ -33,7 +44,7 @@ const App = () =>  {
             <SignUp />
           </Route>
           <Route path="/">
-            <QuestionBox />
+            <QuestionBox authStatus={authStatus}/>
           </Route>
       </Switch>
     </Router>
