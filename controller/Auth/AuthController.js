@@ -208,7 +208,7 @@ class AuthController{
                     
                    use above eg to find users session by using findOne
                 */
-                const isUserSessionExisting = await userSessions.findOne({'session.user.username': username})
+                const isUserSessionExisting = await userSessions.findOne({username: username})
 
                 if(isUserSessionExisting){
                     return response
@@ -218,7 +218,12 @@ class AuthController{
 
                 // when user doesnot have session
 
-                request.session.user ={username:isUserSessionExisting.username, id:isUserExisting._id}
+                request.session.user = {
+                    username: isUserExisting.username,
+                    id: isUserExisting._id,
+                    profileImage: isUserExisting.profileImage,
+                  };
+                  
                 response.status(200).send(request.session)
 
         }); // close formidable 
