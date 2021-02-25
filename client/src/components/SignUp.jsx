@@ -47,6 +47,8 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function SignUp() {
+    
+    // state management
 
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
@@ -54,12 +56,17 @@ export default function SignUp() {
     const history = useHistory();
     const SignUpUser = async (e) => {
       e.preventDefault();
-  
+      
+      //FormData Provides a way to easily construct a set of key/value pairs representing form fields and their values,
+      //which can then be easily sent using the XMLHttpRequest.send()/axios.send() method.
+
       const form_data = new FormData();
       form_data.append("username", username);
       form_data.append("password", password);
       form_data.append("image", image);
-  
+      
+      // saving url in a variable to use it later whenever needed. Good Practises.
+
       const url = "http://localhost:5000/signup";
   
       try {
@@ -81,6 +88,9 @@ export default function SignUp() {
   const classes = useStyles();
 
   return (
+
+    //jsx
+
     <Container component="main" maxWidth="xs">
       <CssBaseline />
       <div className={classes.paper}>
@@ -101,6 +111,7 @@ export default function SignUp() {
             name="username"
             autoComplete="username"
             autoFocus
+            //state management. By setting "setUsername" as entered value, we can send it through props and use "username" in other files.
             onChange={(e) => setUsername(e.target.value)}
           />
           <TextField
@@ -113,6 +124,7 @@ export default function SignUp() {
             type="password"
             id="password"
             autoComplete="current-password"
+            //state management. By setting "setPassword" as entered value, we can send it through props and use "password" in other files.
             onChange={(e) => setPassword(e.target.value)}
           />
           <label style={{marginRight:"5px", fontWeight:"700"}}>Select Profile Image:</label>
