@@ -12,7 +12,7 @@ router.post("/signin", (request, response) => {
   AuthController.Login(request, response);
 });
 
-router.get("/isUserLoggedIn", (request, response) => {
+router.get("/isLoggedIn", (request, response) => {
   AuthController.isLoggedIn(request, response);
 });
 
