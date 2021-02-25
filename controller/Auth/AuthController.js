@@ -21,7 +21,7 @@ cloudinary.config ({
 class AuthController{
     
 
-    //--------------------------signup logic----------------------------------
+    //============================================signup logic=========================================
 
 
     SignUp(request,response) {
@@ -128,7 +128,7 @@ class AuthController{
     
      
 
-    // ------------------------------Login logic----------------------------------
+    // =========================================Login logic=========================================
     
 
 
@@ -223,7 +223,7 @@ class AuthController{
                     id: isUserExisting._id,
                     profileImage: isUserExisting.profileImage,
                   };
-                  
+
                 response.status(200).send(request.session)
 
         }); // close formidable 
@@ -237,7 +237,8 @@ class AuthController{
     }
 
 
-    //-----------------------------
+    //===============================================is logged in========================================================
+
 
     isLoggedIn(request, response) {
         const userSession = request.session || false;
