@@ -81,7 +81,7 @@ class AuthController{
                             .json({ msg:"Image upload error: check your image file type"});
                     }
                     
-                    // get url of the image
+                    // get url of the image if there is no error
 
                     const image_url = results.secure_url;
 
