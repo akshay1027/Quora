@@ -248,7 +248,7 @@ class AuthController{
             return response
               .status(200)
               .json({
-                auth_status: true,
+                authStatus: true,
                 profileImage: userSession.user.profileImage,
               });
           }
