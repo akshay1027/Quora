@@ -5,15 +5,22 @@ import QuestionBox from "./components/QuestionBox";
 import { BrowserRouter as Router, Switch, Route} from "react-router-dom";
 import SignUp from "./components/SignUp";
 import SignIn from "./components/SignIn";
+import axios from "axios"
 
 // use callbacks instead of "function App()"
 
 const App = () =>  {
   
   // prop drilling
-  
+
   const [authStatus, setAuthStatus] = useState(false);
   const [profileImage, setProfileImage] = useState(null);
+
+  // whenever anything happens in the "App", useEffect is triggered.
+
+  useEffect(()=>{
+
+  })
 
   return (
     <Router className="App">
