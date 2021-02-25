@@ -44,7 +44,7 @@ const App = () =>  {
             <SignUp />
           </Route>
           <Route path="/">
-            <QuestionBox authStatus={authStatus}/>
+            <QuestionBox authStatus={authStatus} profileimage={profileImage}/>
           </Route>
       </Switch>
     </Router>
