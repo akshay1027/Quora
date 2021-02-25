@@ -53,8 +53,11 @@ export default function SignUp() {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     const [image, setImage] = useState("");
-    const history = useHistory();
+    const history = useHistory(); // Hook to re-direct user
     const SignUpUser = async (e) => {
+
+      // to avoid refresh.
+
       e.preventDefault();
       
       //FormData Provides a way to easily construct a set of key/value pairs representing form fields and their values,
@@ -65,18 +68,28 @@ export default function SignUp() {
       form_data.append("password", password);
       form_data.append("image", image);
       
-      // saving url in a variable to use it later whenever needed. Good Practises.
+      // saving url in a variable to use it later whenever needed. Best Practises.
 
       const url = "http://localhost:5000/signup";
   
       try {
+
+        // Making http post request to backend using axios.
+
         const response = await axios.post(url, form_data, {
           withCredentials: true,
         });
         console.log(response);
+
+        // Destructure data and status
+
         const { data, status } = response;
   
         if (status === 201) {
+          
+          //if status is created(201 status code), 
+          //re-direct user back to sign in page 
+
           alert(data.msg);
           history.push("/signin");
         }
