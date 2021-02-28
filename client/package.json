@@ -11,6 +11,7 @@
     "axios": "^0.21.1",
     "connect-mongodb-session": "^2.4.1",
     "express-session": "^1.17.1",
+    "pusher-js": "^7.0.3",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "react-router-dom": "^5.2.0",
