@@ -5,6 +5,7 @@ import dotenv from "dotenv";
 import expressSession from "express-session";
 import MongoStore from "connect-mongodb-session";
 import AuthRoute from "./Routes/AuthRoute/AuthRoute";
+import QuestionRoute from "./Routes/QuestionRoute/QuestionRoute";
 
 dotenv.config();
 
@@ -78,6 +79,8 @@ mongoose.connect(mongoURI, mongoDB_connectionOptions, (error) => {
 //=========================================End-points====================================
 
 app.use(AuthRoute);
+app.use(QuestionRoute);
+
 app.get("/", function (req, res) {
   res.send("hello from server");
 });
