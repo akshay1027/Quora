@@ -11,14 +11,14 @@ const QuestionList = () => {
   const [questions, setQuestions] = useState([]);
 
   useEffect(() => {
-    const pusher = new Pusher("53fdc8e9fe904bde24f2", {
-      cluster: "mt1",
-    });
-
-    const channel = pusher.subscribe("questions");
-    channel.bind("insertion", (data) => {
-      setQuestions([data.data, ...questions]);
-    });
+      const pusher = new Pusher('5bb1120da3668b56421f', {
+          cluster: 'mt1'
+      });
+  
+      const channel = pusher.subscribe('questions');
+      channel.bind('insertion', (data)=> {
+        alert(JSON.stringify(data));
+      });
 
     return () => {
       channel.unbind_all();
@@ -27,7 +27,7 @@ const QuestionList = () => {
   }, [questions]);
 
   useEffect(() => {
-    const url = "http://localhost:5000/api/all-questions";
+    const url = "http://localhost:5000/all-questions";
 
     axios
       .get(url, { withCredentials: true })
@@ -38,24 +38,8 @@ const QuestionList = () => {
         console.error(error);
       });
   });
-
-  const Dislike = (ID) => {
-    const url = "http://localhost:5000/api/dislike";
-
-    const data = new FormData();
-    data.append("id", ID);
-
-    axios
-      .post(url, data, { withCredentials: true })
-      .then((response) => {
-        console.log(response);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  };
   const Like = (ID) => {
-    const url = "http://localhost:5000/api/likes";
+    const url = "http://localhost:5000/likes";
 
     const data = new FormData();
     data.append("id", ID);
@@ -89,10 +73,6 @@ const QuestionList = () => {
                     <div className="likes" style={{ cursor: "pointer" }}>
                       <ThumbUpIcon onClick={() => Like(question._id)} />
                       <h4>{question.upvotes}</h4>
-                    </div>
-                    <div className="dislikes" style={{ cursor: "pointer" }}>
-                      <ThumbDownIcon onClick={() => Dislike(question._id)} />
-                      <h4>{question.downvotes}</h4>
                     </div>
                     <div className="comments" style={{ cursor: "pointer" }}>
                       <ChatIcon />
