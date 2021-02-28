@@ -20,8 +20,10 @@
 .QuestionBox_inputfield {
   margin-bottom: 2em;
   border: none;
-  font-weight: 700;
-  font-size: medium;
+  font-weight: 500;
+  font-size: 15px;
+  height: 30px;
+  flex: 1;
 }
 
 .QuestionBox_inputfield::placeholder {
@@ -29,7 +31,21 @@
   font-size: medium;
 }
 
+.QuestionBox_inputField {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
 .user_username {
   margin-left: 0.7em;
   color: rgb(170, 166, 166);
+}
+
+.QuestionBox__btn {
+  margin-bottom: 2em;
+  padding: 4px;
+  background-color: crimson;
+  border-radius: 7px;
+  color: white;
 }
