@@ -22,7 +22,8 @@
     "express": "^4.17.1",
     "express-session": "^1.17.1",
     "formidable": "^1.2.2",
-    "mongoose": "^5.11.10"
+    "mongoose": "^5.11.10",
+    "pusher": "^5.0.0"
   },
   "devDependencies": {
     "nodemon": "^2.0.6"
