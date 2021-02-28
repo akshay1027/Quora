@@ -1,5 +1,6 @@
 import React,{useState} from 'react';
 import Avatar from "@material-ui/core/Avatar";
+import "../StyleSheet/QuestionBox.css";
 import axios from "axios";
 import "../StyleSheet/QuestionBox.css";
 
@@ -32,10 +33,12 @@ const QuestionBox = ({profileimage, authStatus}) => {
                 <h4 className="user_username">Akshay</h4>
             </div>
             
-            <div className="QuestionBox__inputField">
+            <div className="QuestionBox_inputField">
                 <input type="text" 
                 placeholder="What is your question ?" 
-                className="QuestionBox__inputfield"
+                className="QuestionBox_inputfield"
+                onChange={(e) => setQuestion(e.target.value)}
+                value={question}
                 />
                 <button
                 disabled={authStatus === true ? false : true} //allow to ask question only if user is logged in!
