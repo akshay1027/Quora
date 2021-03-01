@@ -5,6 +5,7 @@ import QuestionBox from "./components/QuestionBox";
 import { BrowserRouter as Router, Switch, Route} from "react-router-dom";
 import SignUp from "./components/SignUp";
 import SignIn from "./components/SignIn";
+import QuesstionList from "./components/QuestionList";
 import axios from "axios"
 
 // use callbacks instead of "function App()"
@@ -45,6 +46,7 @@ const App = () =>  {
           </Route>
           <Route path="/">
             <QuestionBox authStatus={authStatus} profileimage={profileImage}/>
+            <QuesstionList />
           </Route>
       </Switch>
     </Router>
