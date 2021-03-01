@@ -1,10 +1,9 @@
 import React, { useState, useEffect } from "react";
 import ThumbUpIcon from "@material-ui/icons/ThumbUp";
-import ThumbDownIcon from "@material-ui/icons/ThumbDown";
 import ChatIcon from "@material-ui/icons/Chat";
 import axios from "axios";
 import Avatar from "@material-ui/core/Avatar";
-import "../StyleSheet/QuestionLIst.css";
+import "../StyleSheet/QuestionList.css";
 import Pusher from "pusher-js";
 
 const QuestionList = () => {
@@ -28,16 +27,29 @@ const QuestionList = () => {
 
   useEffect(() => {
     const url = "http://localhost:5000/all-questions";
+    
+    /*const init = async () => {
 
+        // get http request using axios
+  
+        let res = await axios.get(url);
+        res = await res.data;
+        setQuestions(res);
+      };
+      init();
+     */
+    
     axios
-      .get(url, { withCredentials: true })
+      .get(url, { withCredentials:true })
       .then((response) => {
         setQuestions(response.data);
       })
       .catch((error) => {
         console.error(error);
-      });
+      }); 
+    
   });
+  
   const Like = (ID) => {
     const url = "http://localhost:5000/likes";
 
