@@ -2,6 +2,7 @@ import React, {useState, useEffect} from "react";
 import './App.css';
 import Header from "./components/Header";
 import QuestionBox from "./components/QuestionBox";
+import AnswerBox from "./components/AnswerBox";
 import { BrowserRouter as Router, Switch, Route} from "react-router-dom";
 import SignUp from "./components/SignUp";
 import SignIn from "./components/SignIn";
@@ -48,6 +49,10 @@ const App = () =>  {
             <QuestionBox authStatus={authStatus} profileimage={profileImage}/>
             <QuesstionList />
           </Route>
+          <Route path="/question/id">
+            <AnswerBox authStatus={authStatus} profileimage={profileImage}/>
+          </Route>
+
       </Switch>
     </Router>
   );
