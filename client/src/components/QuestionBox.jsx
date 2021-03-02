@@ -1,6 +1,5 @@
 import React,{useState} from 'react';
 import Avatar from "@material-ui/core/Avatar";
-import "../StyleSheet/QuestionBox.css";
 import axios from "axios";
 import "../StyleSheet/QuestionBox.css";
 
