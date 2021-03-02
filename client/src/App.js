@@ -38,22 +38,22 @@ const App = () =>  {
   return (
     <Router className="App">
       <Header profileImage={profileImage}/> {/* header will be present in all pages */}
-      <Switch>
+          <Switch>
           <Route path="/signin">
             <SignIn />
           </Route>
           <Route path="/signup">
             <SignUp />
           </Route>
+          <Route path="/answer" authStatus={authStatus} profileimage={profileImage}>
+            <AnswerBox />
+          </Route>
+
           <Route path="/">
             <QuestionBox authStatus={authStatus} profileimage={profileImage}/>
             <QuesstionList />
           </Route>
-          <Route path="/question/id">
-            <AnswerBox authStatus={authStatus} profileimage={profileImage}/>
-          </Route>
-
-      </Switch>
+          </Switch>
     </Router>
   );
 } 
