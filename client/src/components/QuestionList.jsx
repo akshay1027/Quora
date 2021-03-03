@@ -5,6 +5,7 @@ import axios from "axios";
 import Avatar from "@material-ui/core/Avatar";
 import "../StyleSheet/QuestionList.css";
 import Pusher from "pusher-js";
+import { Link, useHistory } from 'react-router-dom';
 
 const QuestionList = () => {
   const [questions, setQuestions] = useState([]);
@@ -70,6 +71,7 @@ const QuestionList = () => {
     <div className="QuestionList">
       {questions && (
         <div className="Questions">
+          <Link to="/answer"> {/* to redirect user to /answer page */}
           {questions.map((question) => {
             return (
               <div className="question" key={question._id}>
@@ -94,6 +96,7 @@ const QuestionList = () => {
               </div>
             );
           })}
+          </Link>
         </div>
       )}
     </div>
