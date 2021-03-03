@@ -71,7 +71,6 @@ const QuestionList = () => {
     <div className="QuestionList">
       {questions && (
         <div className="Questions">
-          <Link to="/answer"> {/* to redirect user to /answer page */}
           {questions.map((question) => {
             return (
               <div className="question" key={question._id}>
@@ -88,15 +87,16 @@ const QuestionList = () => {
                       <ThumbUpIcon onClick={() => Like(question._id)} />
                       <h4>{question.upvotes}</h4>
                     </div>
+                    <Link to="/answer"> {/* to redirect user to /answer page */}
                     <div className="comments" style={{ cursor: "pointer" }}>
                       <ChatIcon />
                     </div>
+                    </Link>
                   </div>
                 </div>
               </div>
             );
           })}
-          </Link>
         </div>
       )}
     </div>
