@@ -7,6 +7,7 @@ import { BrowserRouter as Router, Switch, Route} from "react-router-dom";
 import SignUp from "./components/SignUp";
 import SignIn from "./components/SignIn";
 import QuesstionList from "./components/QuestionList";
+import AnswerList from "./components/AnswerLIst";
 import axios from "axios"
 
 // use callbacks instead of "function App()"
@@ -48,8 +49,9 @@ const App = () =>  {
             <SignUp />
           </Route>
 
-          <Route path="/answer" authStatus={authStatus} profileimage={profileImage}>
+          <Route path="/answer/:id" authStatus={authStatus} profileimage={profileImage}>
             <AnswerBox />
+            <AnswerList />
           </Route>
 
           <Route path="/">
