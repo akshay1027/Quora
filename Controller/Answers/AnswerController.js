@@ -1,5 +1,5 @@
 import Formidable from "formidable";
-import questionModel from "../../Model/Questions/Questions";
+import AnswerModel from "../../Model/Answers/Answer";
 import Pusher from "pusher";
 import mongoose from "mongoose";
 
@@ -9,16 +9,16 @@ const pusher = new Pusher({
     secret: "750cdc2fdb0c08176f53",
     cluster: "mt1",
     useTLS: true
-});
+}); 
 
 const db = mongoose.connection;
-const questionsCollection = db.collection("questionsmodels");
+const AnswerCollection = db.collection("answermodels");
 
 db.once("open", () => {
   
   // watch for any changes in our mongodb
-
-  const changeStream = questionsCollection.watch();
+   
+  const changeStream = AnswerCollection.watch();
   
   /*
   {
@@ -33,7 +33,7 @@ db.once("open", () => {
       comments: [],
       owner: 'akshayrr10',
   ora/profileimage/akshayrr10/nv6kjlmyuujrw5hmbgi4.jpg',                               ora/profileimage/akshayrr10/nv6kjlmyuujrw5hmbgi4.jpg',
-      question: 'what is MERN stack?',
+      answer: 'what is MERN stack?',
       __v: 0
     },
     ns: { db: 'pecquora', coll: 'questionsmodels' },
@@ -52,7 +52,7 @@ db.once("open", () => {
   });
 });
 
-class QuestionController {
+class AnswerController {
 
     //===================================================================ask quwstion==================================================
 
@@ -64,15 +64,15 @@ class QuestionController {
         if (error) {
           return response
             .status(500)
-            .json({ msg: "Network Error: Could not ask your question" });
+            .json({ msg: "Network Error: Could not ask your answer" });
         }
 
-        const { question } = fields;
+        const { answer } = fields;
 
-        if (!question) {
+        if (!answer) {
           return response
             .status(400)
-            .json({ msg: "A question has be to be asked" });
+            .json({ msg: "A answer has to be asked" });
         }
 
         const userSession = request.session.user || false;
@@ -80,11 +80,11 @@ class QuestionController {
         if (userSession) {
           const owner_image = userSession.profileImage;
           const owner = userSession.username;
-
-          const newQuestion = new questionModel({
+          
+          const newQuestion = new AnswerModel({
             owner: owner,
             owner_image: owner_image,
-            question: question,
+            answer: answer,
           });
 
           const savedQuestion = await newQuestion.save();
@@ -103,7 +103,7 @@ class QuestionController {
 
   async GetAllQuestions(request, response) {
     try {
-      const data = await questionModel.find();
+      const data = await AnswerModel.find();
       return response.status(200).json(data);
     } catch (error) {
       return response
@@ -124,18 +124,18 @@ class QuestionController {
         if (error) {
           return response
             .status(500)
-            .json({ msg: "Network Error: Failed to like question" });
+            .json({ msg: "Network Error: Failed to like answer" });
         }
 
         const { id } = fields;
 
-        const question = await questionModel.findOne({ _id: id });
+        const answer = await AnswerModel.findOne({ _id: id });
 
-        question.upvotes += 1;
+        answer.upvotes += 1;
 
-        const updatedDoc = await questionModel.findOneAndUpdate(
+        const updatedDoc = await AnswerModel.findOneAndUpdate(
           { _id: id },
-          question,
+          answer,
           { new: true }
         );
 
@@ -149,4 +149,4 @@ class QuestionController {
   }
 }
 
-export default QuestionController;
+export default AnswerController;
