@@ -66,7 +66,7 @@ const QuestionList = () => {
         console.log(error);
       });
   };
-
+  
   const QuestionID = (ID) => {
     const url = "http://localhost:5000/unique-question-id";
 
@@ -103,7 +103,7 @@ const QuestionList = () => {
                       <ThumbUpIcon onClick={() => Like(question._id)} />
                       <h4>{question.upvotes}</h4>
                     </div>
-                    <Link to="/answer" onClick={()=> QuestionID(question._id)}> {/* to redirect user to /answer page */}
+                    <Link to="/answer/:id" onClick={()=> QuestionID(question._id)}> {/* to redirect user to /answer page */}
                     <div className="comments" style={{ cursor: "pointer" }}>
                       <ChatIcon />
                     </div>
