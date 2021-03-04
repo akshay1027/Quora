@@ -30,7 +30,7 @@ const QuestionList = () => {
   }, [questions]);
 
   useEffect(() => {
-    const url = "http://localhost:5000/all-questions";
+    const url = "http://localhost:5000/answer/:id";
     
     /*const init = async () => {
 
@@ -70,6 +70,14 @@ const QuestionList = () => {
       });
   };
 
+  /* flow 
+     1. get the id of element by "_id".
+     2. when clicked on comments send the id as argument.
+     3. post the id over to backend. 
+     4. check if id is present in questions db or send the id back
+     5. make get request and display the id!
+    */
+   
   return (
     <div className="QuestionList">
       {questions && (
