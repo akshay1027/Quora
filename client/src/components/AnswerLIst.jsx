@@ -30,7 +30,7 @@ const QuestionList = () => {
   }, [questions]);
 
   useEffect(() => {
-    const url = "http://localhost:5000/answer/:id";
+    const url = "http://localhost:5000/all-answer";
     
     /*const init = async () => {
 
@@ -55,7 +55,7 @@ const QuestionList = () => {
   });
   
   const Like = (ID) => {
-    const url = "http://localhost:5000/likes";
+    const url = "http://localhost:5000/all-answer/likes";
 
     const data = new FormData();
     data.append("id", ID);
@@ -77,7 +77,7 @@ const QuestionList = () => {
      4. check if id is present in questions db or send the id back
      5. make get request and display the id!
     */
-   
+
   return (
     <div className="QuestionList">
       {questions && (
