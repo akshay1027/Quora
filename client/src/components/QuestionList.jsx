@@ -67,6 +67,22 @@ const QuestionList = () => {
       });
   };
 
+  const QuestionID = (ID) => {
+    const url = "http://localhost:5000/unique-question-id";
+
+    const data = new FormData();
+    data.append("id", ID);
+
+    axios
+      .post(url, data, { withCredentials: true })
+      .then((response) => {
+        console.log(response);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }
+
   return (
     <div className="QuestionList">
       {questions && (
@@ -87,7 +103,7 @@ const QuestionList = () => {
                       <ThumbUpIcon onClick={() => Like(question._id)} />
                       <h4>{question.upvotes}</h4>
                     </div>
-                    <Link to="/answer"> {/* to redirect user to /answer page */}
+                    <Link to="/answer" onClick={()=> QuestionID(question._id)}> {/* to redirect user to /answer page */}
                     <div className="comments" style={{ cursor: "pointer" }}>
                       <ChatIcon />
                     </div>
@@ -96,7 +112,7 @@ const QuestionList = () => {
                 </div>
               </div>
             );
-          })}
+          }).reverse()}
         </div>
       )}
     </div>
