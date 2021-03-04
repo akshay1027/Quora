@@ -1,5 +1,6 @@
 import Formidable from "formidable";
 import AnswerModel from "../../Model/Answers/Answer";
+import questionModel from "../../Model/Questions/Questions";
 import Pusher from "pusher";
 import mongoose from "mongoose";
 
@@ -56,7 +57,7 @@ class AnswerController {
 
     //===================================================================ask quwstion==================================================
 
-  AskQuestion(request, response) {
+  AskAnswer(request, response) {
     const form = new Formidable.IncomingForm();
 
     try {
@@ -101,7 +102,7 @@ class AnswerController {
   
   //===========================================================get all questions====================================================
 
-  async GetAllQuestions(request, response) {
+  async GetAllAnswer(request, response) {
     try {
       const data = await AnswerModel.find();
       return response.status(200).json(data);
@@ -113,10 +114,10 @@ class AnswerController {
   }
   
 
-  //============================================like==========================================================
+  //============================================ for answer page, to get single question using id==========================================================
 
 
-  Like(request, response) {
+  UniqueQuestionID(request, response) {
     const form = new Formidable.IncomingForm();
 
     try {
@@ -129,17 +130,15 @@ class AnswerController {
 
         const { id } = fields;
 
-        const answer = await AnswerModel.findOne({ _id: id });
+        const answer = await questionModel.findOne({ _id: id });
 
-        answer.upvotes += 1;
-
-        const updatedDoc = await AnswerModel.findOneAndUpdate(
+        const updatedDoc = await questionModel.findOneAndUpdate(
           { _id: id },
           answer,
           { new: true }
         );
 
-        return response.status(200).json({ msg: "Liked" });
+        return response.status(200).json({ msg: "question found" });
       });
     } catch (error) {
       return response
