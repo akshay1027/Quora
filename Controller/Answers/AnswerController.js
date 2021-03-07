@@ -1,10 +1,9 @@
 import Formidable from "formidable";
 import AnswerModel from "../../Model/Answers/Answer";
-import questionModel from "../../Model/Questions/Questions";
 import Pusher from "pusher";
 import mongoose from "mongoose";
 
-const pusher = new Pusher({
+/*const pusher = new Pusher({
     appId: "1163594",
     key: "5bb1120da3668b56421f",
     secret: "750cdc2fdb0c08176f53",
@@ -12,7 +11,7 @@ const pusher = new Pusher({
     useTLS: true
 }); 
 
-const db = mongoose.connection;
+/*const db = mongoose.connection;
 const AnswerCollection = db.collection("answermodels");
 
 db.once("open", () => {
@@ -40,18 +39,19 @@ db.once("open", () => {
     ns: { db: 'pecquora', coll: 'questionsmodels' },
     documentKey: { _id: 603b802b46343428ac91def6 }
   }
-  */
+  
   
   // display realtime
   
   changeStream.on("change", (change) => {
     if (change.operationType === "insert") {
-      pusher.trigger("questions", "insertion", {
+      pusher.trigger("answers", "insertion", {
         data: change.fullDocument,
       });
     }
   });
-});
+}); 
+*/
 
 class AnswerController {
 
@@ -82,13 +82,13 @@ class AnswerController {
           const owner_image = userSession.profileImage;
           const owner = userSession.username;
           
-          const newQuestion = new AnswerModel({
+          const newAnswer = new AnswerModel({
             owner: owner,
             owner_image: owner_image,
             answer: answer,
           });
 
-          const savedQuestion = await newQuestion.save();
+          const savedAnswer = await newAnswer.save();
 
           return response.status(201).json({ msg: "Question Asked" });
         }
@@ -100,7 +100,7 @@ class AnswerController {
     }
   }
   
-  //===========================================================get all questions====================================================
+  //===========================================================get all answers====================================================
 
   async GetAllAnswer(request, response) {
     try {
@@ -114,10 +114,23 @@ class AnswerController {
   }
   
 
-  //============================================ for answer page, to get single question using id==========================================================
+}
+
+export default AnswerController;
 
 
-  UniqueQuestionID(request, response) {
+
+
+
+
+
+
+
+
+//============================================ for answer page, to get single question using id==========================================================
+
+
+  /*UniqueQuestionID(request, response) {
     const form = new Formidable.IncomingForm();
 
     try {
@@ -132,11 +145,11 @@ class AnswerController {
 
         const answer = await questionModel.findOne({ _id: id });
 
-        const updatedDoc = await questionModel.findOneAndUpdate(
+        /*const updatedDoc = await questionModel.findOneAndUpdate(
           { _id: id },
           answer,
           { new: true }
-        );
+        ); 
 
         return response.status(200).json({ msg: "question found" });
       });
@@ -146,6 +159,38 @@ class AnswerController {
         .json({ msg: "Server currently down please try again later" });
     }
   }
-}
+  */
 
-export default AnswerController;
+  //=============================================== Like ===================================================================
+
+  /*Like(request, response){
+    const form = new Formidable.IncomingForm();
+
+    try {
+      form.parse(request, async (error, fields, files) => {
+        if (error) {
+          return response
+            .status(500)
+            .json({ msg: "Network Error: Failed to like question" });
+        }
+
+        const { id } = fields;
+
+        const question = await questionModel.findOne({ _id: id });
+
+        question.upvotes += 1;
+
+        const updatedDoc = await questionModel.findOneAndUpdate(
+          { _id: id },
+          question,
+          { new: true }
+        );
+
+        return response.status(200).json({ msg: "Liked" });
+      });
+    } catch (error) {
+      return response
+        .status(500)
+        .json({ msg: "Server currently down please try again later" });
+    }
+  } */
