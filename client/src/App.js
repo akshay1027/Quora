@@ -49,8 +49,8 @@ const App = () =>  {
             <SignUp />
           </Route>
 
-          <Route path="/answer/:id" authStatus={authStatus} profileimage={profileImage}>
-            <AnswerBox />
+          <Route path="/answer/:id">
+            <AnswerBox authStatus={authStatus} profileimage={profileImage}/>
             <AnswerList />
           </Route>
 
