@@ -8,11 +8,11 @@ import "../StyleSheet/QuestionBox.css";
 
 const AnswerBox = ({profileimage, authStatus}) => {
     
-    const [question, setQuestion] = useState("");
+    const [answer, setAnswer] = useState("");
     
-    const AskQuestion = async () => {
+    const askAnswer = async () => {
         const form_data = new FormData();
-        form_data.append("question", question);
+        form_data.append("answer", answer);
         
         const url = "http://localhost:5000/ask-answer";
         
@@ -39,13 +39,13 @@ const AnswerBox = ({profileimage, authStatus}) => {
                 <input type="text" 
                 placeholder="What is your answer ?" 
                 className="QuestionBox_inputfield"
-                onChange={(e) => setQuestion(e.target.value)}
-                value={question}
+                onChange={(e) => setAnswer(e.target.value)}
+                value={answer}
                 />
                 <button
-                disabled={authStatus === true ? false : true} //allow to ask question only if user is logged in!
+                disabled={authStatus === true ? false : true} //allow to ask answer only if user is logged in!
                 className="QuestionBox__btn"
-                onClick={AskQuestion}
+                onClick={askAnswer}
                 >
                 Answer
                 </button>
