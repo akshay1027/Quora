@@ -1,12 +1,12 @@
 import mongoose from 'mongoose';
 
-const questionSchema = mongoose.Schema({
+const answerSchema = mongoose.Schema({
     owner: { type: String, required:true },
     owner_image: { type: String, required:true },
     answer: { type: String, required:true },
     upvotes: { type: Number, default:0 },
 });
 
-const questionModel = mongoose.model("questionsModel", questionSchema);
+const answerModel = mongoose.model("answersModel", answerSchema);
 
-export default questionModel;
+export default answerModel;
