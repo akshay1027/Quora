@@ -3,7 +3,7 @@ import questionModel from "../../Model/Questions/Questions";
 import Pusher from "pusher";
 import mongoose from "mongoose";
 
-const pusher = new Pusher({
+/*const pusher = new Pusher({
     appId: "1163594",
     key: "5bb1120da3668b56421f",
     secret: "750cdc2fdb0c08176f53",
@@ -14,7 +14,7 @@ const pusher = new Pusher({
 const db = mongoose.connection;
 const questionsCollection = db.collection("questionsmodels");
 
-db.once("open", () => {
+/*db.once("open", () => {
   
   // watch for any changes in our mongodb
 
@@ -39,7 +39,7 @@ db.once("open", () => {
     ns: { db: 'pecquora', coll: 'questionsmodels' },
     documentKey: { _id: 603b802b46343428ac91def6 }
   }
-  */
+  
   
   // display realtime
   
@@ -51,6 +51,8 @@ db.once("open", () => {
     }
   });
 });
+
+*/
 
 class QuestionController {
 
