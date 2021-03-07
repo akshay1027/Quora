@@ -10,7 +10,8 @@ import { Link, useHistory } from 'react-router-dom';
 const QuestionList = () => {
   const [questions, setQuestions] = useState([]);
 
-  useEffect(() => {
+  /*
+    useEffect(() => {
       const pusher = new Pusher('5bb1120da3668b56421f', {
           cluster: 'mt1'
       });
@@ -25,6 +26,7 @@ const QuestionList = () => {
       channel.unsubscribe();
     };
   }, [questions]);
+  */
 
   useEffect(() => {
     const url = "http://localhost:5000/all-questions";
