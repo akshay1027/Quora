@@ -11,14 +11,15 @@ import Pusher from "pusher-js";
 import { Link, useHistory } from 'react-router-dom';
 
 const QuestionList = () => {
-  const [questions, setQuestions] = useState([]);
+  const [answers, setAnswer] = useState([]);
 
-  useEffect(() => {
+    /*
+    useEffect(() => {
       const pusher = new Pusher('5bb1120da3668b56421f', {
           cluster: 'mt1'
       });
   
-      const channel = pusher.subscribe('questions');
+      const channel = pusher.subscribe('answers');
       channel.bind('insertion', (data)=> {
         alert(JSON.stringify(data));
       });
@@ -27,32 +28,22 @@ const QuestionList = () => {
       channel.unbind_all();
       channel.unsubscribe();
     };
-  }, [questions]);
+  }, [answers]);
+    */
 
   useEffect(() => {
     const url = "http://localhost:5000/all-answer";
-    
-    /*const init = async () => {
-
-        // get http request using axios
-  
-        let res = await axios.get(url);
-        res = await res.data;
-        setQuestions(res);
-      };
-      init();
-     */
-    
     axios
       .get(url, { withCredentials:true })
       .then((response) => {
-        setQuestions(response.data);
+        setAnswer(response.data);
       })
       .catch((error) => {
         console.error(error);
       }); 
     
   });
+  
   
   const Like = (ID) => {
     const url = "http://localhost:5000/all-answer/likes";
@@ -74,34 +65,34 @@ const QuestionList = () => {
      1. get the id of element by "_id".
      2. when clicked on comments send the id as argument.
      3. post the id over to backend. 
-     4. check if id is present in questions db or send the id back
+     4. check if id is present in answers db or send the id back
      5. make get request and display the id!
     */
 
   return (
     <div className="QuestionList">
-      {questions && (
+      {answers && (
         <div className="Questions">
-          {questions.map((question) => {
+          {answers.map((answer) => {
             return (
-              <div className="question" key={question._id}>
+              <div className="question" key={answer._id}>
                 <div className="question__profile">
-                  <Avatar src={question.owner_image} alt="User Profile" />
-                  <h4>{question.owner}</h4>
+                  <Avatar src={answer.owner_image} alt="User Profile" />
+                  <h4>{answer.owner}</h4>
                 </div>
                 <div className="question__info">
                   <div className="question__question">
-                    <h4>{question.question}</h4>
+                    <h4>{answer.answer}</h4>
                   </div>
                   <div className="question__stats">
                     <div className="likes" style={{ cursor: "pointer" }}>
-                      <ThumbUpIcon onClick={() => Like(question._id)} />
-                      <h4>{question.upvotes}</h4>
+                      <ThumbUpIcon onClick={() => Like(answer._id)} />
+                      <h4>{answer.upvotes}</h4>
                     </div>
-                    <Link to="/answer"> {/* to redirect user to /answer page */}
+                    <Link to="/answer/:id"> {/* to redirect user to /answer page */}
                     <div className="comments" style={{ cursor: "pointer" }}>
                       <ChatIcon />
-                    </div>
+                    </div> 
                     </Link>
                   </div>
                 </div>
