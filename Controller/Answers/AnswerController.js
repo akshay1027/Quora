@@ -1,5 +1,6 @@
 import Formidable from "formidable";
 import AnswerModel from "../../Model/Answers/Answer";
+import questionModel from "../../Model/Questions/Questions";
 import Pusher from "pusher";
 import mongoose from "mongoose";
 
@@ -112,25 +113,44 @@ class AnswerController {
         .json({ msg: "Server currently down please try again later" });
     }
   }
+
+  Like(request, response){
+    const form = new Formidable.IncomingForm();
+
+    try {
+      form.parse(request, async (error, fields, files) => {
+        if (error) {
+          return response
+            .status(500)
+            .json({ msg: "Network Error: Failed to like question" });
+        }
+
+        const { id } = fields;
+
+        const question = await AnswerModel.findOne({ _id: id });
+
+        question.upvotes += 1;
+
+        const updatedDoc = await AnswerModel.findOneAndUpdate(
+          { _id: id },
+          question,
+          { new: true }
+        );
+
+        return response.status(200).json({ msg: "Liked" });
+      });
+    } catch (error) {
+      return response
+        .status(500)
+        .json({ msg: "Server currently down please try again later" });
+    }
+  }
   
 
-}
-
-export default AnswerController;
+  //============================================ for answer page, to get single question using id==========================================================
 
 
-
-
-
-
-
-
-
-
-//============================================ for answer page, to get single question using id==========================================================
-
-
-  /*UniqueQuestionID(request, response) {
+  UniqueQuestionID(request, response) {
     const form = new Formidable.IncomingForm();
 
     try {
@@ -145,12 +165,6 @@ export default AnswerController;
 
         const answer = await questionModel.findOne({ _id: id });
 
-        /*const updatedDoc = await questionModel.findOneAndUpdate(
-          { _id: id },
-          answer,
-          { new: true }
-        ); 
-
         return response.status(200).json({ msg: "question found" });
       });
     } catch (error) {
@@ -159,7 +173,21 @@ export default AnswerController;
         .json({ msg: "Server currently down please try again later" });
     }
   }
-  */
+
+}
+
+export default AnswerController;
+
+
+
+
+
+
+
+
+
+
+  
 
   //=============================================== Like ===================================================================
 
