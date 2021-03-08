@@ -12,12 +12,12 @@ router.get("/all-answer", (request, response) => {
   AnswerController.GetAllAnswer(request, response);
 });
 
-/*router.post("/unique-question-id", (request, response) => {
+router.post("/unique-question-id", (request, response) => {
   AnswerController.UniqueQuestionID(request, response);
 });
 
 router.post("/all-answer/likes", (request, response) => {
   AnswerController.Like(request, response);
-}); */
+}); 
 
 export default router;
