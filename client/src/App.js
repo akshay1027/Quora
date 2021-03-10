@@ -3,6 +3,7 @@ import './App.css';
 import Header from "./components/Header";
 import QuestionBox from "./components/QuestionBox";
 import AnswerBox from "./components/AnswerBox";
+import QuestionById from "./components/QuestionById";
 import { BrowserRouter as Router, Switch, Route} from "react-router-dom";
 import SignUp from "./components/SignUp";
 import SignIn from "./components/SignIn";
@@ -50,8 +51,10 @@ const App = () =>  {
           </Route>
 
           <Route path="/answer/:id">
+            <QuestionById authStatus={authStatus} profileimage={profileImage}/>
             <AnswerBox authStatus={authStatus} profileimage={profileImage}/>
             <AnswerList />
+
           </Route>
 
           <Route path="/">
