@@ -12,6 +12,7 @@ import { Link, useHistory } from 'react-router-dom';
 
 const QuestionList = () => {
   const [answers, setAnswer] = useState([]);
+  const [question, setQuestion] = useState([])
 
     /*
     useEffect(() => {
@@ -41,8 +42,8 @@ const QuestionList = () => {
       .catch((error) => {
         console.error(error);
       }); 
-    
-  });
+
+  },[]);
   
   
   const Like = (ID) => {
