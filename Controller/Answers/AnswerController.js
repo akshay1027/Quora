@@ -114,6 +114,28 @@ class AnswerController {
     }
   }
 
+
+  //===========================================================get question by id====================================================
+
+
+
+  async getQuestionById (request, response) {
+    const product = await questionModel.findById(request.params.id);
+    const question = product.question;
+    if (question) {
+      return response.json(question);
+    } else {
+      response.status(404);
+      throw new Error("Product not found");
+    }
+  };
+
+
+
+  //===========================================================Like========================================================================
+
+
+
   Like(request, response){
     const form = new Formidable.IncomingForm();
 
