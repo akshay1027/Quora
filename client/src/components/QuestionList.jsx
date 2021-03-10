@@ -10,6 +10,7 @@ import { Link, useHistory } from 'react-router-dom';
 const QuestionList = () => {
   const [questions, setQuestions] = useState([]);
 
+
   /*
     useEffect(() => {
       const pusher = new Pusher('5bb1120da3668b56421f', {
@@ -69,21 +70,10 @@ const QuestionList = () => {
       });
   };
   
-  const QuestionID = (ID) => {
-    const url = "http://localhost:5000/unique-question-id";
-
-    const data = new FormData();
-    data.append("id", ID);
-
-    axios
-      .post(url, data, { withCredentials: true })
-      .then((response) => {
-        console.log(response);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  }
+  //const QuestionID = (ID) => {
+    //
+   
+  //}
 
   return (
     <div className="QuestionList">
@@ -105,7 +95,8 @@ const QuestionList = () => {
                       <ThumbUpIcon onClick={() => Like(question._id)} />
                       <h4>{question.upvotes}</h4>
                     </div>
-                    <Link to="/answer/:id" onClick={()=> QuestionID(question._id)}> {/* to redirect user to /answer page */}
+                    <Link to="/answer/:id" /*onClick={()=> QuestionID(question._id)}*/ 
+                    > {/* to redirect user to /answer page */}
                     <div className="comments" style={{ cursor: "pointer" }}>
                       <ChatIcon />
                     </div>
