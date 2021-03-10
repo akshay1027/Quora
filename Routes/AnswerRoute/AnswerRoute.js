@@ -12,8 +12,8 @@ router.get("/all-answer", (request, response) => {
   AnswerController.GetAllAnswer(request, response);
 });
 
-router.post("/unique-question-id", (request, response) => {
-  AnswerController.UniqueQuestionID(request, response);
+router.get("/answer/:id", (request, response) => {
+  AnswerController.getQuestionById(request, response);
 });
 
 router.post("/all-answer/likes", (request, response) => {
