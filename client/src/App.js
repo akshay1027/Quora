@@ -51,14 +51,14 @@ const App = () =>  {
           </Route>
 
           <Route path="/answer/:id">
-            <QuestionById authStatus={authStatus} profileimage={profileImage}/>
-            <AnswerBox authStatus={authStatus} profileimage={profileImage}/>
+            <QuestionById authStatus={authStatus} profileImage={profileImage}/>
+            <AnswerBox authStatus={authStatus} profileImage={profileImage}/>
             <AnswerList />
 
           </Route>
 
           <Route path="/">
-            <QuestionBox authStatus={authStatus} profileimage={profileImage}/>
+            <QuestionBox authStatus={authStatus} profileImage={profileImage}/>
             <QuesstionList />
           </Route>
 
