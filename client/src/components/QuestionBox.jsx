@@ -3,7 +3,7 @@ import Avatar from "@material-ui/core/Avatar";
 import axios from "axios";
 import "../StyleSheet/QuestionBox.css";
 
-const QuestionBox = ({profileimage, authStatus}) => {
+const QuestionBox = ({profileImage, authStatus}) => {
     
     const [question, setQuestion] = useState("");
     
@@ -27,7 +27,7 @@ const QuestionBox = ({profileimage, authStatus}) => {
     return (
         <div className="QuestionBox">
             <div className="questionBox_user">
-                <Avatar src={profileimage} 
+                <Avatar src={profileImage} 
                 alt="user profile" />
                 <h4 className="user_username">Akshay</h4>
             </div>
