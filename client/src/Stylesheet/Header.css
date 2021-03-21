@@ -54,8 +54,13 @@
 }
 
 .right_btn {
-  border-radius: 999px;
+  border-radius: 21px;
   padding: 0.7em 2em;
   background-color: crimson;
   color: white;
+}
+
+.right_btn_a {
+  color: white;
+  text-decoration: none;
 }
