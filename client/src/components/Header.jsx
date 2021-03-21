@@ -7,6 +7,7 @@ import NotificationsIcon from '@material-ui/icons/Notifications';
 import LanguageIcon from '@material-ui/icons/Language';
 import SearchIcon from '@material-ui/icons/Search';
 import Avatar from "@material-ui/core/Avatar";
+import { Link } from 'react-router-dom';
 import "../StyleSheet/Header.css";
 
   const Header = ({profileImage}) => {
@@ -49,8 +50,8 @@ import "../StyleSheet/Header.css";
                <div className="right_user">
                    <Avatar src={profileImage} alt="user profile" />
                </div>
-               <LanguageIcon className="right_icon"/>
-               <button className="right_btn">Ask Questions</button>
+               <button className="right_btn"><a href="/signup" className="right_btn_a">Sign Up</a></button>
+               <button className="right_btn"><a href="/signin" className="right_btn_a">Sign In</a></button>
            </div>
 
         </div>
