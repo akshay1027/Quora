@@ -1,4 +1,5 @@
 import React from "react";
+import AnswerBox from "./AnswerBox";
 import QuestionById from "./QuestionById";
 
 const QuestionScreen = (props) => {
@@ -8,7 +9,12 @@ const QuestionScreen = (props) => {
      const profileImage = props.profileImage;
     
 
-     return <QuestionById questionID={questionID} profileImage={profileImage} authStatus={authStatus}/>
+     return (
+     <div>
+     <QuestionById questionID={questionID} profileImage={profileImage} authStatus={authStatus}/>
+     <AnswerBox profileImage={profileImage} authStatus={authStatus}/>
+     </div>
+     );
 }
 
 export default QuestionScreen;
