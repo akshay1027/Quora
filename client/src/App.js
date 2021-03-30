@@ -41,7 +41,7 @@ const App = () =>  {
   return (
     <Router className="App">
       <Header profileImage={profileImage}/> {/* header will be present in all pages */}
-        
+         <Switch>
           <Route path="/signin">
             <SignIn />
           </Route>
@@ -50,16 +50,20 @@ const App = () =>  {
             <SignUp />
           </Route>
 
-          <Route path="/questions/:id">
+          <Route path="/questions/:id" render={(props) => (
+            <QuestionScreen authStatus={authStatus} profileImage={profileImage}
+                {...props} />
+            )} exact />
+        
+          {/*<Route path="/questions/:id">
             <QuestionScreen authStatus={authStatus} profileImage={profileImage}/>
-            
-          </Route>
-
+            /Route> */}
           <Route path="/">
             <QuestionBox authStatus={authStatus} profileImage={profileImage}/>
             <QuesstionList />
           </Route>
 
+          </Switch>
     </Router>
   );
 } 
