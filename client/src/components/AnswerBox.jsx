@@ -14,7 +14,7 @@ const AnswerBox = ({profileimage, authStatus}) => {
         const form_data = new FormData();
         form_data.append("answer", answer);
         
-        const url = "http://localhost:5000/ask-answer";
+        const url = "http://localhost:5000/api/ask-answer";
         
         try {
         const response = await axios.post(url, form_data, {

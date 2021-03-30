@@ -10,9 +10,10 @@ import "../StyleSheet/QuestionList.css";
 import Pusher from "pusher-js";
 import { Link, useHistory } from 'react-router-dom';
 
-const QuestionById = () => {
+const QuestionById = (props) => {
   const [question, setQuestion] = useState('');
-
+  
+  const questionID = props.questionID; // question id from url
     /*
     useEffect(() => {
       const pusher = new Pusher('5bb1120da3668b56421f', {
@@ -32,9 +33,8 @@ const QuestionById = () => {
     */
 
   useEffect(() => {
-    const url = "http://localhost:5000/answer/:id";
+    const url = `http://localhost:5000/questions/${questionID}`;
 
-     
     axios
     .get(url, { withCredentials:true })
     .then((response) => {
@@ -47,7 +47,7 @@ const QuestionById = () => {
   
   
   const Like = (ID) => {
-    const url = "http://localhost:5000/all-question/likes";
+    const url = "http://localhost:5000/api/all-question/likes";
 
     const data = new FormData();
     data.append("id", ID);

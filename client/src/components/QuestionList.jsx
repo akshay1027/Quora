@@ -30,7 +30,7 @@ const QuestionList = () => {
   */
 
   useEffect(() => {
-    const url = "http://localhost:5000/all-questions";
+    const url = "http://localhost:5000/api/all-questions";
     
     /*const init = async () => {
 
@@ -55,7 +55,7 @@ const QuestionList = () => {
   });
   
   const Like = (ID) => {
-    const url = "http://localhost:5000/likes";
+    const url = "http://localhost:5000/api/likes";
 
     const data = new FormData();
     data.append("id", ID);
@@ -95,7 +95,7 @@ const QuestionList = () => {
                       <ThumbUpIcon onClick={() => Like(question._id)} />
                       <h4>{question.upvotes}</h4>
                     </div>
-                    <Link to="/answer/:id" /*onClick={()=> QuestionID(question._id)}*/ 
+                    <Link to= {`/questions/${question._id}`} /*onClick={()=> QuestionID(question._id)}*/ 
                     > {/* to redirect user to /answer page */}
                     <div className="comments" style={{ cursor: "pointer" }}>
                       <ChatIcon />

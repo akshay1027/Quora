@@ -17,7 +17,7 @@ const questionsCollection = db.collection("questionsmodels");
 /*db.once("open", () => {
   
   // watch for any changes in our mongodb
-
+  
   const changeStream = questionsCollection.watch();
   
   /*
@@ -114,6 +114,20 @@ class QuestionController {
     }
   }
   
+  //===========================================get question by id==========================================
+
+  async getQuestionById (request, response) {
+    try {
+        const currentQuestionId = await questionModel.findById(request.params.id);
+        return response.status(200).json(currentQuestionId);
+
+
+    } catch (error) {
+      return response
+        .status(500)
+        .json({ msg: "Server currently down please try again later" });
+    }
+}
 
   //============================================like==========================================================
 

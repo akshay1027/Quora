@@ -10,6 +10,7 @@ import SignIn from "./components/SignIn";
 import QuesstionList from "./components/QuestionList";
 import AnswerList from "./components/AnswerLIst";
 import axios from "axios"
+import QuestionScreen from "./components/QuestionScreen";
 
 // use callbacks instead of "function App()"
 
@@ -40,8 +41,7 @@ const App = () =>  {
   return (
     <Router className="App">
       <Header profileImage={profileImage}/> {/* header will be present in all pages */}
-        <Switch>
-
+        
           <Route path="/signin">
             <SignIn />
           </Route>
@@ -50,11 +50,9 @@ const App = () =>  {
             <SignUp />
           </Route>
 
-          <Route path="/answer/:id">
-            <QuestionById authStatus={authStatus} profileImage={profileImage}/>
-            <AnswerBox authStatus={authStatus} profileImage={profileImage}/>
-            <AnswerList />
-
+          <Route path="/questions/:id">
+            <QuestionScreen authStatus={authStatus} profileImage={profileImage}/>
+            
           </Route>
 
           <Route path="/">
@@ -62,7 +60,6 @@ const App = () =>  {
             <QuesstionList />
           </Route>
 
-        </Switch>
     </Router>
   );
 } 

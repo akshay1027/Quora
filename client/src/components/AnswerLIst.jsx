@@ -33,7 +33,7 @@ const QuestionList = () => {
     */
 
   useEffect(() => {
-    const url = "http://localhost:5000/all-answer";
+    const url = "http://localhost:5000/api/all-answer";
     axios
       .get(url, { withCredentials:true })
       .then((response) => {
@@ -47,7 +47,7 @@ const QuestionList = () => {
   
   
   const Like = (ID) => {
-    const url = "http://localhost:5000/all-answer/likes";
+    const url = "http://localhost:5000/api/all-answer/likes";
 
     const data = new FormData();
     data.append("id", ID);
@@ -90,7 +90,7 @@ const QuestionList = () => {
                       <ThumbUpIcon onClick={() => Like(answer._id)} />
                       <h4>{answer.upvotes}</h4>
                     </div>
-                    <Link to="/answer/:id"> {/* to redirect user to /answer page */}
+                    <Link to="/answer/:id"> 
                     <div className="comments" style={{ cursor: "pointer" }}>
                       <ChatIcon />
                     </div> 

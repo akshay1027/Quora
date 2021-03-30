@@ -83,7 +83,7 @@ class AnswerController {
           const owner_image = userSession.profileImage;
           const owner = userSession.username;
           
-          const newAnswer = new AnswerModel({
+          const newAnswer = new AnswerModel({ 
             owner: owner,
             owner_image: owner_image,
             answer: answer,
@@ -117,19 +117,47 @@ class AnswerController {
 
   //===========================================================get question by id====================================================
 
+  async getQuestionById (request, response) {
+      try {
+          const currentQuestionId = await answerModel.findById(request.params.id);
+          return response.status(200).json(currentQuestionId);
 
+
+      } catch (error) {
+        return response
+          .status(500)
+          .json({ msg: "Server currently down please try again later" });
+      }
+  }
+ 
+  /*async getQuestionById (request, response) {
+    try {
+        const product = await questionModel.findById(request.params.id);
+        const question = product.question;
+        return response.status(200).json(question);
+    } catch (error) {
+        return response
+          .status(500)
+          .json({ msg: "Server currently down please try again later" });
+      }
+  };
+  
 
   async getQuestionById (request, response) {
-    const product = await questionModel.findById(request.params.id);
-    const question = product.question;
-    if (question) {
-      return response.json(question);
-    } else {
-      response.status(404);
-      throw new Error("Product not found");
-    }
+    try {
+        const product = await questionModel.findById(request.params.id).populate('answersModel').exec((err, posts) => {
+            console.log("Populated User " + posts);
+          })
+        const question = product.question;
+        return response.status(200).json(question);   
+    } catch (error) {
+        return response
+          .status(500)
+          .json({ msg: "Server currently down please try again later" });
+      }
   };
-
+  */
+  
 
 
   //===========================================================Like========================================================================
