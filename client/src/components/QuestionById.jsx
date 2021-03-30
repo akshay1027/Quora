@@ -14,6 +14,8 @@ const QuestionById = (props) => {
   const [question, setQuestion] = useState('');
   
   const questionID = props.questionID; // question id from url
+  const authStatus = props.authStatus;
+  const profileImage = props.profileImage;
     /*
     useEffect(() => {
       const pusher = new Pusher('5bb1120da3668b56421f', {
@@ -71,6 +73,33 @@ const QuestionById = (props) => {
     */
 
   return (
+    
+    <div className="QuestionList">
+      {question && (
+        <div className="Questions">
+        <div className="question" key={question._id}>
+        <div className="question__profile">
+          <Avatar src={profileImage} alt="User Profile" />
+          <h4>{question.owner}</h4>
+        </div>
+        <div className="question__info">
+          <div className="question__question">
+            <h4>{question.question}</h4>
+          </div>
+          <div className="question__stats">
+            <div className="likes" style={{ cursor: "pointer" }}>
+              <ThumbUpIcon onClick={() => Like(question._id)} />
+              <h4>{question.upvotes}</h4>
+            </div>
+          </div>
+        </div>
+      </div>
+      </div>
+      )}
+    </div> 
+    
+
+    /* ================================================== 
     <div className="QuestionList">
       {question && (
         <div className="Questions">
@@ -97,7 +126,7 @@ const QuestionById = (props) => {
           })}
         </div>
       )}
-    </div>
+    </div> */
   );
 };
 
