@@ -1,8 +1,8 @@
 import mongoose from 'mongoose';
 
 const answerSchema = mongoose.Schema({
-    questionID: { type: String, required:true },
-    author: { type: String, required:true },
+    questionID: { type: String },
+    author: { type: String },
     owner: { type: String, required:true },
     owner_image: { type: String, required:true },
     answer: { type: String, required:true },
