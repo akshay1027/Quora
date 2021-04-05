@@ -2,13 +2,10 @@ import React, {useState, useEffect} from "react";
 import './App.css';
 import Header from "./components/Header";
 import QuestionBox from "./components/QuestionBox";
-import AnswerBox from "./components/AnswerBox";
-import QuestionById from "./components/QuestionById";
 import { BrowserRouter as Router, Switch, Route} from "react-router-dom";
 import SignUp from "./components/SignUp";
 import SignIn from "./components/SignIn";
 import QuesstionList from "./components/QuestionList";
-import AnswerList from "./components/AnswerLIst";
 import axios from "axios"
 import QuestionScreen from "./components/QuestionScreen";
 

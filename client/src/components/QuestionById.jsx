@@ -3,18 +3,14 @@
 
 import React, { useState, useEffect } from "react";
 import ThumbUpIcon from "@material-ui/icons/ThumbUp";
-import ChatIcon from "@material-ui/icons/Chat";
 import axios from "axios";
 import Avatar from "@material-ui/core/Avatar";
 import "../StyleSheet/QuestionList.css";
-import Pusher from "pusher-js";
-import { Link, useHistory } from 'react-router-dom';
 
 const QuestionById = (props) => {
   const [question, setQuestion] = useState('');
   
   const questionID = props.questionID; // question id from url
-  const authStatus = props.authStatus;
   const profileImage = props.profileImage;
     /*
     useEffect(() => {

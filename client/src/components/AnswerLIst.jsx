@@ -7,12 +7,11 @@ import ChatIcon from "@material-ui/icons/Chat";
 import axios from "axios";
 import Avatar from "@material-ui/core/Avatar";
 import "../StyleSheet/QuestionList.css";
-import Pusher from "pusher-js";
-import { Link, useHistory } from 'react-router-dom';
+
+import { Link } from 'react-router-dom';
 
 const QuestionList = () => {
   const [answers, setAnswer] = useState([]);
-  const [question, setQuestion] = useState([])
 
     /*
     useEffect(() => {
