@@ -31,7 +31,10 @@ const QuestionById = (props) => {
     */
 
   useEffect(() => {
-    const url = `http://localhost:5000/questions/${questionID}`;
+    const server1 = process.env.NODE_ENV === "production"
+         ? `https://pecquora-backend.herokuapp.com/questions/${questionID}` : `http://localhost:5000/questions/${questionID}`;
+    
+    const url = server1;
 
     axios
     .get(url, { withCredentials:true })
@@ -45,7 +48,10 @@ const QuestionById = (props) => {
   
   
   const Like = (ID) => {
-    const url = "http://localhost:5000/api/all-question/likes";
+    const server1 = process.env.NODE_ENV === "production"
+         ? "https://pecquora-backend.herokuapp.com/api/all-question/likes" : "http://localhost:5000/api/all-question/likes";
+    
+    const url = server1;
 
     const data = new FormData();
     data.append("id", ID);

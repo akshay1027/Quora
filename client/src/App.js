@@ -21,8 +21,10 @@ const App = () =>  {
   // whenever anything happens in the "App", useEffect is triggered.
 
   useEffect(()=>{
-    
-    const url="http://localhost:5000/isLoggedIn";
+    const server1 = process.env.NODE_ENV === "production"
+        ? "https://pecquora-backend.herokuapp.com/isLoggedIn" : "http://localhost:5000/isLoggedIn";
+        
+    const url= server1;
 
     axios
         .get(url, {withCredentials: true})

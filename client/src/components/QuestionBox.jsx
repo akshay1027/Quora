@@ -10,8 +10,13 @@ const QuestionBox = ({profileImage, authStatus}) => {
     const AskQuestion = async () => {
         const form_data = new FormData();
         form_data.append("question", question);
+
+        const server1 = process.env.NODE_ENV === "production"
+         ? "https://pecquora-backend.herokuapp.com/api/ask-question" : "http://localhost:5000/api/ask-question";
+    
+         const url = server1;
         
-        const url = "http://localhost:5000/api/ask-question";
+       
         
         try {
         const response = await axios.post(url, form_data, {

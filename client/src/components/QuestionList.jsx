@@ -30,7 +30,11 @@ const QuestionList = () => {
   */
 
   useEffect(() => {
-    const url = "http://localhost:5000/api/all-questions";
+    const server1 = process.env.NODE_ENV === "production"
+    ? "https://pecquora-backend.herokuapp.com/api/all-questions" : "http://localhost:5000/api/all-questions";
+
+    const url = server1;
+
     
     /*const init = async () => {
 

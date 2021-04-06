@@ -14,7 +14,10 @@ const AnswerBox = ({profileimage, authStatus}) => {
         const form_data = new FormData();
         form_data.append("answer", answer);
         
-        const url = "http://localhost:5000/api/ask-answer";
+        const server1 = process.env.NODE_ENV === "production"
+        ? "https://pecquora-backend.herokuapp.com/api/ask-answer" : "http://localhost:5000/api/ask-answer";
+        
+        const url = server1;
         
         try {
         const response = await axios.post(url, form_data, {

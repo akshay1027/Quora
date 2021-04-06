@@ -32,7 +32,10 @@ const QuestionList = () => {
     */
 
   useEffect(() => {
-    const url = "http://localhost:5000/api/all-answer";
+    const server1 = process.env.NODE_ENV === "production"
+    ? "https://pecquora-backend.herokuapp.com/api/all-answer" : "http://localhost:5000/api/all-answer";
+    
+    const url = server1;
     axios
       .get(url, { withCredentials:true })
       .then((response) => {
@@ -46,7 +49,10 @@ const QuestionList = () => {
   
   
   const Like = (ID) => {
-    const url = "http://localhost:5000/api/all-answer/likes";
+    const server1 = process.env.NODE_ENV === "production"
+    ? "https://pecquora-backend.herokuapp.com/api/all-answer/likes" : "http://localhost:5000/api/all-answer/likes";
+    
+    const url = server1;
 
     const data = new FormData();
     data.append("id", ID);

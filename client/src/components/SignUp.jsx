@@ -69,8 +69,10 @@ export default function SignUp() {
       form_data.append("image", image);
       
       // saving url in a variable to use it later whenever needed. Best Practises.
-
-      const url = "http://localhost:5000/signup";
+      const server1 = process.env.NODE_ENV === "production"
+      ? "https://pecquora-backend.herokuapp.com/signup" : "http://localhost:5000/signup";
+ 
+      const url = server1;
   
       try {
 
