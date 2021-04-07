@@ -30,6 +30,7 @@ const QuestionBox = ({profileImage, authStatus}) => {
     };
     
     return (
+        <div className="questionBackground">
         <div className="QuestionBox">
             <div className="questionBox_user">
                 <Avatar src={profileImage} 
@@ -52,6 +53,7 @@ const QuestionBox = ({profileImage, authStatus}) => {
                 Ask Question
                 </button>
             </div>
+        </div>
         </div>
     )
 }
