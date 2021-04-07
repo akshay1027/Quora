@@ -23,7 +23,7 @@ const App = () =>  {
   useEffect(()=>{
     const server1 = process.env.NODE_ENV === "production"
         ? "https://pecquora-backend.herokuapp.com/isLoggedIn" : "http://localhost:5000/isLoggedIn";
-        
+
     const url= server1;
 
     axios

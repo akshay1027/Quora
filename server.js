@@ -16,9 +16,12 @@ const app = express();
 
 //cors
 
+const server1 = process.env.NODE_ENV === "production"
+        ? "https://pecquora-akshayrr.vercel.app/" : "http://localhost:3000";
+
 app.use(
     cors({
-        origin: "http://localhost:3000",
+        origin: server1,
         credentials: true,
     })
 )
