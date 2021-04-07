@@ -19,12 +19,7 @@ const app = express();
 const server1 = process.env.NODE_ENV === "production"
         ? "https://pecquora-akshayrr.vercel.app" : "http://localhost:3000";
 
-app.use(
-    cors({
-        origin: server1,
-        credentials: true,
-    })
-)
+app.use(cors());
 
 //database to store session
 
