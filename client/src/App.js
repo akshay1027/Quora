@@ -5,9 +5,11 @@ import QuestionBox from "./components/QuestionBox";
 import { BrowserRouter as Router, Switch, Route} from "react-router-dom";
 import SignUp from "./components/SignUp";
 import SignIn from "./components/SignIn";
+import NavBar from "./components/Navbar"
 import QuesstionList from "./components/QuestionList";
 import axios from "axios"
 import QuestionScreen from "./components/QuestionScreen";
+import Background from "./components/Background";
 
 // use callbacks instead of "function App()"
 
@@ -39,7 +41,7 @@ const App = () =>  {
 
   return (
     <Router className="App">
-      <Header profileImage={profileImage}/> {/* header will be present in all pages */}
+      <NavBar profileImage={profileImage}/> {/* header will be present in all pages */}
          <Switch>
           <Route path="/signin">
             <SignIn />
@@ -49,7 +51,7 @@ const App = () =>  {
             <SignUp />
           </Route>
 
-          <Route path="/questions/:id" render={(props) => (
+          <Route path="/questions/:id" render={(props) => (  
             <QuestionScreen authStatus={authStatus} profileImage={profileImage}
                 {...props} />
             )} exact />
@@ -58,8 +60,11 @@ const App = () =>  {
             <QuestionScreen authStatus={authStatus} profileImage={profileImage}/>
             /Route> */}
           <Route path="/">
+            <div style={{background:"rgba(25, 28, 31)"}}>
+            <Background />
             <QuestionBox authStatus={authStatus} profileImage={profileImage}/>
             <QuesstionList />
+            </div>
           </Route>
 
           </Switch>
@@ -68,3 +73,4 @@ const App = () =>  {
 } 
 
 export default App;
+
