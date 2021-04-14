@@ -1,25 +1,34 @@
+:root {
+  --background1: rgb(19, 31, 49);
+  --background2: rgba(13, 18, 26, 0.94);
+  --backgroundforapp: rgb(18, 20, 22);
+  --backgroundAppJs: rgba(25, 28, 31);
+  --textcolour: rgb(237, 229, 229);
+  --secondarycolor: #10f89f;
+}
+
 .Questions {
   display: flex;
   flex-direction: column;
-  margin-top: 4rem;
+  margin-top: 5rem;
 }
 
 .question {
   display: flex;
   flex-direction: column;
   align-items: center;
-  background: rgb(252, 251, 251);
+  background: var(--background2);
   /*background-color: rgb(220, 220, 220);*/
   /*box-shadow: rgba(72, 11, 242, 0.878) 0px 5px 30px 0px;*/
   box-shadow: rgba(43, 38, 55, 0.707) 0px 5px 25px 0px;
-  width: 80%;
+  width: 84%;
   margin: 0 auto;
   margin-bottom: 3rem;
   transition: transform 0.4s;
 }
 .question:hover {
   transform: scale(1.1);
-  box-shadow: rgba(69, 51, 119, 0.878) 0px 5px 25px 0px;
+  box-shadow: rgba(119, 98, 179, 0.878) 0px 5px 25px 0px;
 }
 
 .question__profile {
@@ -27,6 +36,7 @@
   display: flex;
   align-items: center;
   margin-bottom: 1rem;
+  color: var(--textcolour);
 }
 
 .question__profile > h4 {
@@ -41,6 +51,7 @@
 .question__question {
   margin-bottom: 1rem;
   padding: 1rem;
+  color: var(--textcolour);
 }
 
 .question__stats {
@@ -48,15 +59,21 @@
   align-items: center;
   justify-content: space-around;
   margin-bottom: 1rem;
-  color: rgb(28, 26, 26);
+  color: var(--textcolour);
 }
 
 .likes,
-.dislikes {
+.dislikes,
+.comments {
   display: flex;
   align-items: center;
+  justify-content: space-evenly;
 }
 
 .likes:hover {
-  color: blue;
+  color: var(--secondarycolor);
+}
+
+.comments:hover {
+  color: var(--secondarycolor);
 }

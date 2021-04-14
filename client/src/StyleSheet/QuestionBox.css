@@ -1,14 +1,22 @@
+:root {
+  --background1: rgb(19, 31, 49);
+  --background2: rgba(13, 18, 26, 0.94);
+  --textcolour: rgb(253, 246, 246);
+  --secondarycolor: #10f89f;
+}
+
 .QuestionBox {
   display: flex;
   flex-direction: column;
   margin-top: 5em;
-  border: 1px solid lightgray;
   width: 80%;
   margin: 0 auto;
   outline: none;
   border: none;
-  background-color: rgb(255, 255, 255);
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  background: var(--background2);
+
+  box-shadow: 0 4px 8px 0 rgba(230, 227, 227, 0.823),
+    0 6px 20px 0 rgba(0, 0, 0, 0.19);
   padding: 0.4em 1.5em;
 }
 
@@ -17,7 +25,7 @@
   align-items: center;
   margin-bottom: 1.5em;
   margin-top: 1.5em;
-  background-color: rgb(255, 255, 255);
+  background: var(--background2);
 }
 
 .QuestionBox_inputfield {
@@ -28,15 +36,15 @@
   font-size: 15px;
   height: 30px;
   flex: 1;
-  color: rgb(17, 17, 17);
-  background-color: rgb(255, 255, 255);
+  color: var(--textcolour);
+  background: var(--background2);
 }
 
 .QuestionBox_inputfield::placeholder {
   font-weight: 500;
   font-size: medium;
-  background-color: rgb(255, 255, 255);
-  color: rgb(10, 10, 10);
+  background: var(--background2);
+  color: var(--textcolour);
 }
 
 .QuestionBox_inputField {
@@ -44,28 +52,36 @@
   justify-content: space-between;
   align-items: center;
   outline: none;
-  background-color: rgb(255, 255, 255);
-  color: rgb(48, 46, 46);
+  background: var(--background2);
+  color: var(--textcolour);
 }
 
 .user_username {
   margin-left: 0.7em;
-  color: rgb(0, 0, 0);
+  color: var(--textcolour);
 }
 
 .QuestionBox__btn {
   margin-bottom: 2em;
-  padding: 4px;
-  background-color: rgb(17, 2, 5);
   outline: none;
-  border: 2px solid rgb(216, 216, 216);
+  font-weight: 900;
+  border: 2px solid var(--secondarycolor);
   padding: 1em;
   border-radius: 7px;
-  color: rgb(218, 215, 215);
+  color: var(--background2);
+  background: var(--secondarycolor);
 }
 
+@media (max-width: 500px) {
+  .QuestionBox__btn {
+    padding: 9px;
+  }
+  .questionBox_user {
+    padding-bottom: 7px;
+    border-bottom: 2px solid var(--secondarycolor);
+  }
+}
 .QuestionBox__btn:hover {
-  background: crimson;
-  color: rgb(255, 255, 255);
+  color: var(--background2);
   transform: scale(1.1);
 }
