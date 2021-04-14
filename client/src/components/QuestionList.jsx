@@ -99,9 +99,9 @@ const QuestionList = () => {
                       <ThumbUpIcon onClick={() => Like(question._id)} />
                       <h4>{question.upvotes}</h4>
                     </div>
-                    <Link to= {`/questions/${question._id}`} /*onClick={()=> QuestionID(question._id)}*/ 
+                    <Link className="comments" style ={{textDecoration: "none", color: "white"}}to= {`/questions/${question._id}`} /*onClick={()=> QuestionID(question._id)}*/ 
                     > {/* to redirect user to /answer page */}
-                    <div className="comments" style={{ cursor: "pointer" }}>
+                    <div className="comments" style={{ cursor: "pointer", textDecoration: "none" }}>
                       <ChatIcon />
                     </div>
                     </Link>
