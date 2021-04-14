@@ -1,12 +1,13 @@
 import express from "express";
 import mongoose, { mongo } from "mongoose";
-import cors from "cors";
+const cors = require("cors");
 import dotenv from "dotenv";
 import expressSession from "express-session";
 import MongoStore from "connect-mongodb-session";
 import AuthRoute from "./Routes/AuthRoute/AuthRoute";
 import QuestionRoute from "./Routes/QuestionRoute/QuestionRoute";
 import AnswerRoute from "./Routes/AnswerRoute/AnswerRoute";
+const logger = require("morgan");
 
 dotenv.config();
 
@@ -19,7 +20,14 @@ const app = express();
 const server1 = process.env.NODE_ENV === "production"
         ? "https://pecquora-akshayrr.vercel.app" : "http://localhost:3000";
 
-app.use(cors());
+app.use(
+    cors({
+        origin: server1,
+        credentials: true,
+    })
+)
+
+app.use(logger("dev"));
 
 //database to store session
 
