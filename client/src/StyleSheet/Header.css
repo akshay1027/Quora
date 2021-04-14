@@ -1,8 +1,6 @@
 .header {
   display: flex;
   align-items: center;
-  margin-bottom: 5em;
-
   box-shadow: 0 4px 8px 0 rgba(253, 251, 251, 0.2),
     0 6px 10px 0 rgba(196, 168, 168, 0.844);
 }
@@ -71,4 +69,8 @@
 .right_btn_a {
   color: white;
   text-decoration: none;
+}
+
+.right_btn:hover {
+  background-color: #0cb7d3;
 }
