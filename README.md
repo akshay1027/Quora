@@ -1,5 +1,12 @@
+
 <h1> Pec Quora </h1>
 <h1> Pec Quora is a Question and Answer based website for my college Pondicherry Technological University (formerly PEC). </h1>
+![2021-04-13 (6)](https://user-images.githubusercontent.com/65683151/115128592-8365e480-9ffc-11eb-99b5-3c45c2041c02.png)  
+
+
+![2021-04-12 (1)](https://user-images.githubusercontent.com/65683151/115128621-a395a380-9ffc-11eb-8e88-463685ea6573.png)  
+
+
 <br>
 <h2> Backend dependencies : </h3>
 <h4> yarn add @babel/node @babel/preset-env @babel/core express mongoose formidable cors dotenv cloudinary bcrypt express-session connect-mongodb-session && yarn add -D nodemon </h4>
