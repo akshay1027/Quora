@@ -12,6 +12,7 @@ import Background from "./components/Background";
 
 // use callbacks instead of "function App()"
 
+
 const App = () =>  {
   
   // prop drilling
