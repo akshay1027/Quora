@@ -10,7 +10,7 @@ import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
-import axios from "axios";
+import axios from "../helper/axioshelper";
 
 
 function Copyright() {
@@ -78,7 +78,7 @@ export default function SignUp() {
 
         // Making http post request to backend using axios.
 
-        const response = await axios.post(url, form_data, {
+        const response = await axios.post("/signup", form_data, {
           withCredentials: true,
         });
         console.log(response);
