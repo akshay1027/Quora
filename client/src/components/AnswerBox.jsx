@@ -3,7 +3,7 @@
 
 import React,{useState} from 'react';
 import Avatar from "@material-ui/core/Avatar";
-import axios from "axios";
+import axios from "../helper/axioshelper";
 import "../StyleSheet/QuestionBox.css";
 
 const AnswerBox = ({profileImage, authStatus}) => {
@@ -15,12 +15,12 @@ const AnswerBox = ({profileImage, authStatus}) => {
         form_data.append("answer", answer);
         
         const server1 = process.env.NODE_ENV === "production"
-        ? "https://pecquora-backend.herokuapp.com/api/ask-answer" : "http://localhost:5000/api/ask-answer";
+        ? "https://pecquora-backend.herokuapp.com/api/ask-answer/" : "http://localhost:5000/api/ask-answer/";
         
         const url = server1;
         
         try {
-        const response = await axios.post(url, form_data, {
+        const response = await axios.post("/api/ask-answer", form_data, {
             withCredentials: true,
         });
         
