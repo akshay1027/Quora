@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import ThumbUpIcon from "@material-ui/icons/ThumbUp";
 import ChatIcon from "@material-ui/icons/Chat";
-import axios from "axios";
+import axios from "../helper/axioshelper";
 import Avatar from "@material-ui/core/Avatar";
 import "../StyleSheet/QuestionList.css";
 
@@ -48,7 +48,7 @@ const QuestionList = () => {
      */
     
     axios
-      .get(url, { withCredentials:true })
+      .get("/api/all-questions", { withCredentials:true })
       .then((response) => {
         setQuestions(response.data);
       })
@@ -59,7 +59,7 @@ const QuestionList = () => {
   });
   
   const Like = (ID) => {
-    const url = "http://localhost:5000/api/likes";
+    const url = "/api/likes";
 
     const data = new FormData();
     data.append("id", ID);
