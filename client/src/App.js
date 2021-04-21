@@ -1,6 +1,5 @@
 import React, {useState, useEffect} from "react";
 import './App.css';
-import Header from "./components/Header";
 import QuestionBox from "./components/QuestionBox";
 import { BrowserRouter as Router, Switch, Route} from "react-router-dom";
 import SignUp from "./components/SignUp";
@@ -29,7 +28,7 @@ const App = () =>  {
     const url= server1;
 
     axios
-        .get(url, {withCredentials: true})
+        .get("/isLoggedIn", {withCredentials: true})
         .then((response)=>{
             setAuthStatus(response.data.authStatus);
             setProfileImage(response.data.profileImage);
