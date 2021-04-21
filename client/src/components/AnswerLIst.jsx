@@ -4,7 +4,7 @@
 import React, { useState, useEffect } from "react";
 import ThumbUpIcon from "@material-ui/icons/ThumbUp";
 import ChatIcon from "@material-ui/icons/Chat";
-import axios from "axios";
+import axios from "../helper/axioshelper";
 import Avatar from "@material-ui/core/Avatar";
 import "../StyleSheet/QuestionList.css";
 
@@ -37,7 +37,7 @@ const QuestionList = () => {
     
     const url = server1;
     axios
-      .get(url, { withCredentials:true })
+      .get("/api/all-answer", { withCredentials:true })
       .then((response) => {
         setAnswer(response.data);
       })
@@ -58,7 +58,7 @@ const QuestionList = () => {
     data.append("id", ID);
 
     axios
-      .post(url, data, { withCredentials: true })
+      .post("/api/all-answer/likes", data, { withCredentials: true })
       .then((response) => {
         console.log(response);
       })
