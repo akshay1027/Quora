@@ -3,7 +3,7 @@
 
 import React, { useState, useEffect } from "react";
 import ThumbUpIcon from "@material-ui/icons/ThumbUp";
-import axios from "axios";
+import axios from "../helper/axioshelper";
 import Avatar from "@material-ui/core/Avatar";
 import "../StyleSheet/QuestionList.css";
 
@@ -32,12 +32,12 @@ const QuestionById = (props) => {
 
   useEffect(() => {
     const server1 = process.env.NODE_ENV === "production"
-         ? `https://pecquora-backend.herokuapp.com/questions/${questionID}` : `http://localhost:5000/questions/${questionID}`;
+         ? `https://pecquora-backend.herokuapp.com/questions/${questionID}/` : `http://localhost:5000/questions/${questionID}/`;
     
     const url = server1;
 
     axios
-    .get(url, { withCredentials:true })
+    .get(`/questions/${questionID}/`, { withCredentials:true })
     .then((response) => {
       setQuestion(response.data);
     })
@@ -57,7 +57,7 @@ const QuestionById = (props) => {
     data.append("id", ID);
 
     axios
-      .post(url, data, { withCredentials: true })
+      .post("/api/all-question/likes", data, { withCredentials: true })
       .then((response) => {
         console.log(response);
       })
