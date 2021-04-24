@@ -2,7 +2,8 @@
 <h1> Pec Quora </h1>
 <h1> Pec Quora is a Question and Answer based website for my college Pondicherry Technological University (formerly PEC). </h1>
 
-<h1> Backend is not yet deployed  </h1>
+<h1> Backend is not yet deployed  </h1>  
+
 ![2021-04-13 (6)](https://user-images.githubusercontent.com/65683151/115128592-8365e480-9ffc-11eb-99b5-3c45c2041c02.png)  
 
 
