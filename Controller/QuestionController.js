@@ -1,7 +1,6 @@
 import Formidable from "formidable";
-import questionModel from "../../Model/Questions/Questions";
-import Pusher from "pusher";
-import mongoose from "mongoose";
+import questionModel from "../Model/Questions";
+
 
 /*const pusher = new Pusher({
     appId: "1163594",
@@ -163,6 +162,61 @@ class QuestionController {
         .json({ msg: "Server currently down please try again later" });
     }
   }
+
+  //============================ post answer to DB ======================================
+
+  SendAnswer(request, response) {
+    const form = new Formidable.IncomingForm();
+
+    try {
+      form.parse(request, async (error, fields) => {
+        if (error) {
+          return response
+            .status(500)
+            .json({ msg: "Network Error: Could not ask your question" });
+        }
+
+        const ID = request.params.id;
+
+        const { comments } = fields;
+
+        if (!comments) {
+          return response
+            .status(400)
+            .json({ msg: "A answer has be to be send" });
+        }
+
+        const question = await questionModel.findOne({ _id: ID });
+
+        question.comments.push(...comments);
+        
+        const updatedDoc = await questionModel.findOneAndUpdate(
+            { _id: ID },
+            question,
+            { new: true }
+          );
+
+          return response.status(201).json({ msg: "Answer is stored in db" });
+        
+      });
+    } catch (error) {
+      return response
+        .status(500)
+        .json({ msg: "Server currently down please try again later" });
+    }
+  }
+
+  async GetAllAnswer(request, response) {
+    try {
+      const data = await questionModel.find();
+      return response.status(200).json(data);
+    } catch (error) {
+      return response
+        .status(500)
+        .json({ msg: "Server currently down please try again later" });
+    }
+  }
+
 }
 
 export default QuestionController;

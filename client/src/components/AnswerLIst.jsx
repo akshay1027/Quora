@@ -10,8 +10,12 @@ import "../StyleSheet/QuestionList.css";
 
 import { Link } from 'react-router-dom';
 
-const QuestionList = () => {
+const QuestionList = (props) => {
   const [answers, setAnswer] = useState([]);
+
+  const questionID = props.questionID; // question id from url
+  const profileImage = props.profileImage;
+  const authStatus = props.authStatus;
 
     /*
     useEffect(() => {
@@ -37,7 +41,7 @@ const QuestionList = () => {
     
     const url = server1;
     axios
-      .get("/api/all-answer", { withCredentials:true })
+      .get(`/api/all-answer/${questionID}/`, { withCredentials:true })
       .then((response) => {
         setAnswer(response.data);
       })
@@ -88,7 +92,7 @@ const QuestionList = () => {
                 </div>
                 <div className="question__info">
                   <div className="question__question">
-                    <h4>{answer.answer}</h4>
+                    <h4>{answer.questions}</h4>
                   </div>
                   <div className="question__stats">
                     <div className="likes" style={{ cursor: "pointer" }}>

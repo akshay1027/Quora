@@ -1,8 +1,6 @@
 import Formidable from "formidable";
-import AnswerModel from "../../Model/Answers/Answer";
-import questionModel from "../../Model/Questions/Questions";
-import Pusher from "pusher";
-import mongoose from "mongoose";
+import AnswerModel from "../Model/Answer";
+import questionModel from "../Model/Questions";
 
 /*const pusher = new Pusher({
     appId: "1163594",
@@ -62,7 +60,7 @@ class AnswerController {
     const form = new Formidable.IncomingForm();
 
     try {
-      form.parse(request, async (error, fields, files) => {
+      form.parse(request, async (error, fields) => {
         if (error) {
           return response
             .status(500)
@@ -91,7 +89,7 @@ class AnswerController {
 
           const savedAnswer = await newAnswer.save();
 
-          return response.status(201).json({ msg: "Question Asked" });
+          return response.status(201).json({ msg: "Answer Asked" });
         }
       });
     } catch (error) {

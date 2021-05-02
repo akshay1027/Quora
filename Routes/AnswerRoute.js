@@ -1,10 +1,10 @@
 import express from "express";
-import AnswersController from "../../Controller/Answers/AnswerController";
+import AnswersController from "../Controller/AnswerController";
 
 const router = express.Router();
 const AnswerController = new AnswersController();
 
-router.post("/api/ask-answer", (request, response) => {
+router.post("/api/send-answer/", (request, response) => {
   AnswerController.AskAnswer(request, response);
 });
 

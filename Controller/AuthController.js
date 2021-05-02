@@ -1,8 +1,8 @@
 import dotenv from 'dotenv';	
 import formidable from 'formidable';	
 import Cloudinary from 'cloudinary';	
-import {userModel} from "../../Model/User/Users";	
-import {userSessions} from "../../Model/UserSession/UserSessions";	
+import {userModel} from "../Model/Users";	
+import {userSessions} from "../Model/UserSessions";	
 import Bcrypt from "bcrypt";	
 
 dotenv.config();	
@@ -137,7 +137,7 @@ class AuthController{
        1) Parse using formidable	
        2) Destructure request	
        3) username, password validation	
-       4) check password with harshed password in db	
+       4) check password with hashed password in db	
        5) check if session is present 	
        6) catch method 	
     */	

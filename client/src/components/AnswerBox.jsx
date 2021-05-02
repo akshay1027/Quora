@@ -6,21 +6,21 @@ import Avatar from "@material-ui/core/Avatar";
 import axios from "../helper/axioshelper";
 import "../StyleSheet/QuestionBox.css";
 
-const AnswerBox = ({profileImage, authStatus}) => {
+const AnswerBox = ({profileImage, authStatus, questionID}) => {
     
     const [answer, setAnswer] = useState("");
     
     const askAnswer = async () => {
         const form_data = new FormData();
-        form_data.append("answer", answer);
+        form_data.append("comments", answer);
         
         const server1 = process.env.NODE_ENV === "production"
-        ? "https://pecquora-backend.herokuapp.com/api/ask-answer/" : "http://localhost:5000/api/ask-answer/";
+        ? "https://pecquora-backend.herokuapp.com/api/send-answer/${questionID}/" : "http://localhost:5000/api/send-answer/";
         
         const url = server1;
         
         try {
-        const response = await axios.post("/api/ask-answer", form_data, {
+        const response = await axios.post(`/api/send-answer/${questionID}/`, form_data, {
             withCredentials: true,
         });
         
