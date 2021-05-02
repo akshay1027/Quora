@@ -4,9 +4,9 @@ const cors = require("cors");
 import dotenv from "dotenv";
 import expressSession from "express-session";
 import MongoStore from "connect-mongodb-session";
-import AuthRoute from "./Routes/AuthRoute/AuthRoute";
-import QuestionRoute from "./Routes/QuestionRoute/QuestionRoute";
-import AnswerRoute from "./Routes/AnswerRoute/AnswerRoute";
+import AuthRoute from "./Routes/AuthRoute";
+import QuestionRoute from "./Routes/QuestionRoute";
+import AnswerRoute from "./Routes/AnswerRoute";
 const logger = require("morgan");
 
 dotenv.config();
@@ -85,7 +85,7 @@ app.use(QuestionRoute);
 app.use(AnswerRoute);
 
 app.get("/", function (req, res) {
-  res.send("hello from server");
+  res.send("hello from server bro");
 });
 
 //==========================================Express cofig======================================================
