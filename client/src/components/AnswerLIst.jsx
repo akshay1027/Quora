@@ -37,12 +37,13 @@ const QuestionList = (props) => {
 
   useEffect(() => {
     const server1 = process.env.NODE_ENV === "production"
-    ? "https://pecquora-backend.herokuapp.com/api/all-answer" : "http://localhost:5000/api/all-answer";
+    ? "https://pecquora-backend.herokuapp.com/api/all-answers" : "http://localhost:5000/api/all-answers";
     
     const url = server1;
     axios
       .get(`/api/all-answer/${questionID}/`, { withCredentials:true })
       .then((response) => {
+        console.log(response.data);
         setAnswer(response.data);
       })
       .catch((error) => {
@@ -54,7 +55,7 @@ const QuestionList = (props) => {
   
   const Like = (ID) => {
     const server1 = process.env.NODE_ENV === "production"
-    ? "https://pecquora-backend.herokuapp.com/api/all-answer/likes" : "http://localhost:5000/api/all-answer/likes";
+    ? "https://pecquora-backend.herokuapp.com/api/all-answers/likes" : "http://localhost:5000/api/all-answers/likes";
     
     const url = server1;
 
@@ -62,7 +63,7 @@ const QuestionList = (props) => {
     data.append("id", ID);
 
     axios
-      .post("/api/all-answer/likes", data, { withCredentials: true })
+      .post(`/api/answers/likes/${questionID}/`, data, { withCredentials: true })
       .then((response) => {
         console.log(response);
       })
@@ -79,27 +80,69 @@ const QuestionList = (props) => {
      5. make get request and display the id!
     */
 
-  return (
+     return (
+        <div className="QuestionList">
+          {answers && (
+            <div className="Questions">
+            { answers.map((answer) => {
+                return (
+                <div className="question" key={answer._id}>
+                    <div className="question__profile">
+                      <Avatar src={answer.owner_image} alt="User Profile" />
+                      <h4>{answer.owner}</h4>
+                    </div>
+                     <div className="question__info">
+                      <div className="question__question">
+                            <h4 >{answer.text}</h4>       
+                      </div>
+                      <div className="question__stats">
+                        <div className="likes" style={{ cursor: "pointer" }}>
+                          <ThumbUpIcon onClick={() => Like(answer._id)} />
+                          <h4>{answer.upvotes}</h4>
+                        </div>
+                        <Link style ={{textDecoration: "none", color: "white"}}> 
+                        <div className="comments" style={{ cursor: "pointer", textDecoration: "none" }}>
+                          <ChatIcon />
+                        </div> 
+                        </Link>
+                      </div>
+                    </div>
+                  </div>
+                  );
+                })}
+            </div>
+          )}
+        </div>
+      );
+    };
+
+
+export default QuestionList;
+
+
+/* 
+
+    return (
     <div className="QuestionList">
       {answers && (
         <div className="Questions">
-          {answers.map((answer) => {
+          {answers.map((answers) => {
             return (
-              <div className="question" key={answer._id}>
+              <div className="question" key={answers._id}>
                 <div className="question__profile">
-                  <Avatar src={answer.owner_image} alt="User Profile" />
-                  <h4>{answer.owner}</h4>
+                  <Avatar src={answers.owner_image} alt="User Profile" />
+                  <h4>{answers.owner}</h4>
                 </div>
-                <div className="question__info">
+                 <div className="question__info">
                   <div className="question__question">
-                    <h4>{answer.questions}</h4>
+                    <h4>{answers.comments.text}</h4>
                   </div>
                   <div className="question__stats">
                     <div className="likes" style={{ cursor: "pointer" }}>
-                      <ThumbUpIcon onClick={() => Like(answer._id)} />
-                      <h4>{answer.upvotes}</h4>
+                      <ThumbUpIcon onClick={() => Like(answers._id)} />
+                      <h4>{answers.upvotes}</h4>
                     </div>
-                    <Link to="/answer/:id"> 
+                    <Link > 
                     <div className="comments" style={{ cursor: "pointer" }}>
                       <ChatIcon />
                     </div> 
@@ -115,4 +158,46 @@ const QuestionList = (props) => {
   );
 };
 
-export default QuestionList;
+*/
+
+
+/*
+
+      return (
+    <div className="QuestionList">
+      {answers && (
+        <div className="Questions">
+            <div className="question" key={answers._id}>
+                <div className="question__profile">
+                  <Avatar src={answers.owner_image} alt="User Profile" />
+                  <h4>{answers.owner}</h4>
+                </div>
+                 <div className="question__info">
+                  <div className="question__question">
+                    { answers.map((answer) => {
+                        return (
+                        <h4 key={answer._id}>{answer.comments.text}</h4>
+                        );
+                    })}
+                    
+                  </div>
+                  <div className="question__stats">
+                    <div className="likes" style={{ cursor: "pointer" }}>
+                      <ThumbUpIcon onClick={() => Like(answers._id)} />
+                      <h4>{answers.upvotes}</h4>
+                    </div>
+                    <Link > 
+                    <div className="comments" style={{ cursor: "pointer" }}>
+                      <ChatIcon />
+                    </div> 
+                    </Link>
+                  </div>
+                </div>
+              </div>
+        </div>
+      )}
+    </div>
+  );
+};
+
+*/

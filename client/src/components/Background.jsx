@@ -6,7 +6,7 @@ import React from "react";
     const location = window.location.href;
 
     return(
-        <div style={{padding:"4rem"}}>
+        <div style={{padding:"2rem"}}>
 
         </div>
             
