@@ -6,7 +6,6 @@ import expressSession from "express-session";
 import MongoStore from "connect-mongodb-session";
 import AuthRoute from "./Routes/AuthRoute";
 import QuestionRoute from "./Routes/QuestionRoute";
-import AnswerRoute from "./Routes/AnswerRoute";
 const logger = require("morgan");
 
 dotenv.config();
@@ -67,6 +66,7 @@ const mongoDB_connectionOptions ={
     useNewUrlParser: true,
     useUnifiedTopology: true,
     useCreateIndex: true,
+    useFindAndModify: false
 }
 
 mongoose.connect(mongoURI, mongoDB_connectionOptions, (error) => {
@@ -82,14 +82,13 @@ mongoose.connect(mongoURI, mongoDB_connectionOptions, (error) => {
 
 app.use(AuthRoute);
 app.use(QuestionRoute);
-app.use(AnswerRoute);
 
 app.get("/", function (req, res) {
   res.send("hello from server bro");
 });
 
 //==========================================Express cofig======================================================
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 5001;
 
 app.listen(PORT, ()=>{
     console.log(`server started at PORT ${PORT}`);
