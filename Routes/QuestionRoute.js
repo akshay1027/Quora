@@ -1,4 +1,4 @@
-import express from "express";
+import express, { request, response } from "express";
 import questionsController from "../Controller/QuestionController";
 
 const router = express.Router();
@@ -25,7 +25,10 @@ router.get("/api/all-answer/:id", (request, response) => {
 });
 
 router.post("/api/likes", (request, response) => {
-  QuestionController.Like(request, response);
+  QuestionController.LikeQuestion(request, response);
 });
 
+router.post("/api/answers/likes/:id", (request, response) => {
+  QuestionController.LikeAnswer(request, response);
+})
 export default router;
