@@ -12,29 +12,8 @@ const QuestionById = (props) => {
   
   const questionID = props.questionID; // question id from url
   const profileImage = props.profileImage;
-    /*
-    useEffect(() => {
-      const pusher = new Pusher('5bb1120da3668b56421f', {
-          cluster: 'mt1'
-      });
-  
-      const channel = pusher.subscribe('question');
-      channel.bind('insertion', (data)=> {
-        alert(JSON.stringify(data));
-      });
-
-    return () => {
-      channel.unbind_all();
-      channel.unsubscribe();
-    };
-  }, [question]);
-    */
 
   useEffect(() => {
-    const server1 = process.env.NODE_ENV === "production"
-         ? `https://pecquora-backend.herokuapp.com/questions/${questionID}/` : `http://localhost:5000/questions/${questionID}/`;
-    
-    const url = server1;
 
     axios
     .get(`/questions/${questionID}/`, { withCredentials:true })
@@ -48,10 +27,6 @@ const QuestionById = (props) => {
   
   
   const Like = (ID) => {
-    const server1 = process.env.NODE_ENV === "production"
-         ? "https://pecquora-backend.herokuapp.com/api/all-question/likes" : "http://localhost:5000/api/all-question/likes";
-    
-    const url = server1;
 
     const data = new FormData();
     data.append("id", ID);
@@ -99,36 +74,6 @@ const QuestionById = (props) => {
       </div>
       )}
     </div> 
-    
-
-    /* ================================================== 
-    <div className="QuestionList">
-      {question && (
-        <div className="Questions">
-          {question.map((question) => {
-            return (
-              <div className="question" key={question._id}>
-                <div className="question__profile">
-                  <Avatar src={question.owner_image} alt="User Profile" />
-                  <h4>{question.owner}</h4>
-                </div>
-                <div className="question__info">
-                  <div className="question__question">
-                    <h4>{question.question}</h4>
-                  </div>
-                  <div className="question__stats">
-                    <div className="likes" style={{ cursor: "pointer" }}>
-                      <ThumbUpIcon onClick={() => Like(question._id)} />
-                      <h4>{question.upvotes}</h4>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            );
-          })}
-        </div>
-      )}
-    </div> */
   );
 };
 

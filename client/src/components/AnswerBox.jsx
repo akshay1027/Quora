@@ -14,11 +14,6 @@ const AnswerBox = ({profileImage, authStatus, questionID}) => {
         const form_data = new FormData();
         form_data.append("comments", answer);
         
-        const server1 = process.env.NODE_ENV === "production"
-        ? "https://pecquora-backend.herokuapp.com/api/send-answer/${questionID}/" : "http://localhost:5000/api/send-answer/";
-        
-        const url = server1;
-        
         try {
         const response = await axios.post(`/api/send-answer/${questionID}/`, form_data, {
             withCredentials: true,

@@ -17,29 +17,7 @@ const QuestionList = (props) => {
   const profileImage = props.profileImage;
   const authStatus = props.authStatus;
 
-    /*
-    useEffect(() => {
-      const pusher = new Pusher('5bb1120da3668b56421f', {
-          cluster: 'mt1'
-      });
-  
-      const channel = pusher.subscribe('answers');
-      channel.bind('insertion', (data)=> {
-        alert(JSON.stringify(data));
-      });
-
-    return () => {
-      channel.unbind_all();
-      channel.unsubscribe();
-    };
-  }, [answers]);
-    */
-
   useEffect(() => {
-    const server1 = process.env.NODE_ENV === "production"
-    ? "https://pecquora-backend.herokuapp.com/api/all-answers" : "http://localhost:5000/api/all-answers";
-    
-    const url = server1;
     axios
       .get(`/api/all-answer/${questionID}/`, { withCredentials:true })
       .then((response) => {

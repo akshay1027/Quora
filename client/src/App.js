@@ -23,10 +23,6 @@ const App = () =>  {
   // whenever anything happens in the "App", useEffect is triggered.
 
   useEffect(()=>{
-    const server1 = process.env.NODE_ENV === "production"
-        ? "https://pecquora-backend.herokuapp.com/isLoggedIn" : "http://localhost:5000/isLoggedIn";
-
-    const url= server1;
 
     axios
         .get("/isLoggedIn", {withCredentials: true})
@@ -56,9 +52,6 @@ const App = () =>  {
                 {...props} />
             )} exact />
         
-          {/*<Route path="/questions/:id">
-            <QuestionScreen authStatus={authStatus} profileImage={profileImage}/>
-            /Route> */}
           <Route path="/">
             <div style={{background:"rgba(25, 28, 31)"}}>
             <Background />

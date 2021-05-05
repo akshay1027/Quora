@@ -10,43 +10,8 @@ import { Link } from 'react-router-dom';
 const QuestionList = () => {
   const [questions, setQuestions] = useState([]);
 
-
-  /*
-    useEffect(() => {
-      const pusher = new Pusher('5bb1120da3668b56421f', {
-          cluster: 'mt1'
-      });
-  
-      const channel = pusher.subscribe('questions');
-      channel.bind('insertion', (data)=> {
-        alert(JSON.stringify(data));
-      });
-
-    return () => {
-      channel.unbind_all();
-      channel.unsubscribe();
-    };
-  }, [questions]);
-  */
-
   useEffect(() => {
-    const server1 = process.env.NODE_ENV === "production"
-    ? "https://pecquora-backend.herokuapp.com/api/all-questions" : "http://localhost:5000/api/all-questions";
 
-    const url = server1;
-
-    
-    /*const init = async () => {
-
-        // get http request using axios
-  
-        let res = await axios.get(url);
-        res = await res.data;
-        setQuestions(res);
-      };
-      init();
-     */
-    
     axios
       .get("/api/all-questions", { withCredentials:true })
       .then((response) => {
@@ -75,11 +40,6 @@ const QuestionList = () => {
       });
   };
   
-  //const QuestionID = (ID) => {
-    //
-   
-  //}
-
   return (
     <div className="QuestionList">
       {questions && (

@@ -59,12 +59,6 @@ export default function SignUp() {
       form_data.append("username", username);
       form_data.append("password", password);
       form_data.append("image", image);
-
-      const server1 = process.env.NODE_ENV === "production"
-      ? "https://pecquora-backend.herokuapp.com/signin" : "http://localhost:5000/signin";
- 
-      const url = server1;
-  
   
       try {
         const response = await axios.post("/signin", form_data, {
