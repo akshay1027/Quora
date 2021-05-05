@@ -1,12 +1,11 @@
-import Formidable from "formidable";
-import questionModel from "../Model/Questions";
+const formidable = require('formidable');	
+const questionModel = require('../Model/Questions');
 
-class QuestionController {
 
     //===================================================================ask quwstion==================================================
 
-  AskQuestion(request, response) {
-    const form = new Formidable.IncomingForm();
+    const AskQuestion = (request, response) => {
+    const form = new formidable.IncomingForm();
 
     try {
       form.parse(request, async (error, fields, files) => {
@@ -50,20 +49,20 @@ class QuestionController {
   
   //===========================================================get all questions====================================================
 
-  async GetAllQuestions(request, response) {
+   const GetAllQuestions = async (request, response) => {
     try {
       const data = await questionModel.find();
       return response.status(200).json(data);
     } catch (error) {
       return response
-        .status(500)
+        .status(501)
         .json({ msg: "Server currently down please try again later" });
     }
   }
   
   //===========================================get question by id==========================================
 
-  async getQuestionById (request, response) {
+   const getQuestionById = async (request, response) => {
     try {
         const currentQuestionId = await questionModel.findById(request.params.id);
         return response.status(200).json(currentQuestionId);
@@ -79,8 +78,8 @@ class QuestionController {
   //============================================like for question ==========================================================
 
 
-  LikeQuestion(request, response) {
-    const form = new Formidable.IncomingForm();
+    const LikeQuestion = (request, response) => {
+    const form = new formidable.IncomingForm();
 
     try {
       form.parse(request, async (error, fields, files) => {
@@ -113,8 +112,8 @@ class QuestionController {
 
   //============================ post answer to DB ======================================
 
-  SendAnswer(request, response) {
-    const form = new Formidable.IncomingForm();
+    const SendAnswer = (request, response) => {
+    const form = new formidable.IncomingForm();
 
     try {
       form.parse(request, async (error, fields) => {
@@ -169,7 +168,7 @@ class QuestionController {
     }
   }
 
-  async GetAllAnswer(request, response) {
+   const GetAllAnswer = async (request, response) => {
     try {
         const ID = request.params.id;
 
@@ -187,8 +186,8 @@ class QuestionController {
     //==========================================like for answer==========================================================
 
 
-    LikeAnswer(request, response) {    
-        const form = new Formidable.IncomingForm();
+    const LikeAnswer = (request, response) => {    
+        const form = new formidable.IncomingForm();
 
         try {
             form.parse(request, async (error, fields, files) => {
@@ -224,15 +223,7 @@ class QuestionController {
                      }
                 }
             ) */
-
-            console.log(answer);
-    
-            const updatedDoc = await questionModel.findOneAndUpdate(
-              { "comments._id": id },
-              answer,
-              { new: true }
-            );
-    
+  
             return response.status(200).json({ msg: "Liked" });
         });
         } catch (error) {
@@ -242,6 +233,13 @@ class QuestionController {
         }
       }
 
-}
 
-export default QuestionController;
+module.exports = {
+    AskQuestion,
+    GetAllQuestions,
+    getQuestionById,
+    SendAnswer,
+    GetAllAnswer,
+    LikeQuestion,
+    LikeAnswer
+};

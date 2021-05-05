@@ -1,9 +1,9 @@
-import dotenv from 'dotenv';	
-import formidable from 'formidable';	
-import Cloudinary from 'cloudinary';	
-import {userModel} from "../Model/Users";	
-import {userSessions} from "../Model/UserSessions";	
-import Bcrypt from "bcrypt";	
+const dotenv = require('dotenv');	
+const formidable = require('formidable');	
+const Cloudinary = require('cloudinary');	
+const userModel = require("../Model/Users");	
+const userSessions = require("../Model/UserSessions");	
+const Bcrypt = require("bcrypt");	
 
 dotenv.config();	
 
@@ -16,15 +16,11 @@ cloudinary.config ({
     api_secret: process.env.api_secret,	
 });	
 
-//--------------------class method to follow OOPs-------------------	
-
-class AuthController{	
-
 
     //============================================signup logic=========================================	
 
 
-    SignUp(request,response) {	
+    const SignUp = (request,response) => {	
 
         const form = new formidable.IncomingForm();	
 
@@ -142,7 +138,7 @@ class AuthController{
        6) catch method 	
     */	
 
-    Login(request,response){	
+    const Login = (request,response) => {	
 
         // getting data using formidable	
 
@@ -238,7 +234,7 @@ class AuthController{
     //===============================================is logged in========================================================	
 
 
-    isLoggedIn(request, response) {	
+    const isLoggedIn = (request, response) => {	
         const userSession = request.session || false;	
 
         try {	
@@ -258,6 +254,10 @@ class AuthController{
           });	
         }	
       }	
-}	
 
-export default AuthController; 
+
+      module.exports = {
+        SignUp,
+        Login,
+        isLoggedIn,
+      };

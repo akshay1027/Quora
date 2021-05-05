@@ -1,4 +1,4 @@
-import mongoose from 'mongoose';
+const mongoose = require('mongoose');
 
 const questionSchema = mongoose.Schema({
     owner: { type: String, required:true },
@@ -15,6 +15,10 @@ const questionSchema = mongoose.Schema({
     ]
 });
 
-const questionModel = mongoose.model("questionsModel", questionSchema);
+const questionModel = mongoose.model('questionsModel', questionSchema);
 
-export default questionModel;
+module.exports = questionModel;
+
+//const questionModel = mongoose.model("questionsModel", questionSchema);
+
+//export default questionModel;

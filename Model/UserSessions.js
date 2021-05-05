@@ -1,8 +1,12 @@
-import mongoose from "mongoose";
+const mongoose = require('mongoose');
 
 const UserSessionsSchema = mongoose.Schema({
     expires: {type:Date, required: true},
     session: {type:Object, required:true},
 });
 
-export const userSessions = mongoose.model("usersessions",UserSessionsSchema);        
+const userSessions = mongoose.model('usersessions', UserSessionsSchema);
+
+module.exports = userSessions;
+
+//export const userSessions = mongoose.model("usersessions",UserSessionsSchema);        
