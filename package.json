@@ -7,14 +7,11 @@
   "author": "akshay1027 <akshayar1027@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "start": "babel-node server.js",
-    "dev": "nodemon --exec babel-node server.js"
+    "dev": "nodemon --exec node server.js"
   },
   "dependencies": {
-    "@babel/core": "^7.12.9",
-    "@babel/node": "^7.12.6",
-    "@babel/preset-env": "^7.12.7",
     "bcrypt": "^5.0.0",
+    "body-parser": "^1.19.0",
     "cloudinary": "^1.23.0",
     "connect-mongodb-session": "^2.4.1",
     "cors": "^2.8.5",
