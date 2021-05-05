@@ -1,11 +1,11 @@
-import express from "express";
-import mongoose, { mongo } from "mongoose";
-const cors = require("cors");
-import dotenv from "dotenv";
-import expressSession from "express-session";
-import MongoStore from "connect-mongodb-session";
-import AuthRoute from "./Routes/AuthRoute";
-import QuestionRoute from "./Routes/QuestionRoute";
+const express = require("express") ;
+const mongoose = require("mongoose") ;
+const cors =  require("cors");
+const dotenv = require("dotenv") ;
+const expressSession = require("express-session") ;
+const MongoStore = require("connect-mongodb-session") ;
+const AuthRoute = require("./Routes/AuthRoute") ;
+const QuestionRoute = require( "./Routes/QuestionRoute");
 const logger = require("morgan");
 
 dotenv.config();
@@ -14,12 +14,7 @@ const app = express();
 
 //================middleware==========
 
-//cors
-
-const server1 = process.env.NODE_ENV === "production"
-        ? "https://pecquora-akshayrr.vercel.app/" : "http://localhost:3000/";
-
-app.use(cors({}));
+app.use(cors());
 
 app.use(logger("dev"));
 
