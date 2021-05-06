@@ -12,7 +12,7 @@ const QuestionBox = ({profileImage, authStatus, username}) => {
         form_data.append("question", question);
      
         try {
-        const response = await axios.post("/api/ask-question", form_data, {
+        const response = await axios.post("https://pecquora-akshayrr1027.herokuapp.com/api/ask-question", form_data, {
             withCredentials: true,
         });
         
@@ -30,7 +30,7 @@ const QuestionBox = ({profileImage, authStatus, username}) => {
                 alt="user profile" />
                 { authStatus === true ? 
                 <h4 className="user_username">{username}</h4> :
-                <h4 className="user_username">No username yet(login)</h4>
+                <h4 className="user_username">No username yet! (login)</h4>
                 }
             </div>
             

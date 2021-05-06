@@ -13,15 +13,16 @@ const QuestionList = () => {
   useEffect(() => {
 
     axios
-      .get("/api/all-questions", { withCredentials:true })
+      .get("https://pecquora-akshayrr1027.herokuapp.com/api/all-questions", { withCredentials:true })
       .then((response) => {
         console.log(response);
         setQuestions(response.data);
-      })
+      });
+    
   });
   
   const Like = (ID) => {
-    const url = "/api/likes";
+    const url = "https://pecquora-akshayrr1027.herokuapp.com/api/likes";
 
     const data = new FormData();
     data.append("id", ID);

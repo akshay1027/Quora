@@ -17,7 +17,7 @@ function Copyright() {
   return (
     <Typography variant="body2" color="textSecondary" align="center">
       {'Copyright © '}
-      <Link color="inherit" to="https://material-ui.com/">
+      <Link color="inherit" to="/">
         PECQuora
       </Link>{' '}
       {new Date().getFullYear()}
@@ -61,7 +61,7 @@ export default function SignUp() {
       form_data.append("image", image);
   
       try {
-        const response = await axios.post("/signin", form_data, {
+        const response = await axios.post("https://pecquora-akshayrr1027.herokuapp.com/signin", form_data, {
           withCredentials: true,
         });
         console.log(response);

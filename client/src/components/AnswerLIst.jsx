@@ -3,12 +3,9 @@
 
 import React, { useState, useEffect } from "react";
 import ThumbUpIcon from "@material-ui/icons/ThumbUp";
-import ChatIcon from "@material-ui/icons/Chat";
 import axios from "../helper/axioshelper";
 import Avatar from "@material-ui/core/Avatar";
 import "../StyleSheet/QuestionList.css";
-
-import { Link } from 'react-router-dom';
 
 const QuestionList = (props) => {
   const [answers, setAnswer] = useState([]);
@@ -19,7 +16,7 @@ const QuestionList = (props) => {
 
   useEffect(() => {
     axios
-      .get(`/api/all-answer/${questionID}/`, { withCredentials:true })
+      .get(`https://pecquora-akshayrr1027.herokuapp.com/api/all-answer/${questionID}/`, { withCredentials:true })
       .then((response) => {
         console.log(response.data);
         setAnswer(response.data);
@@ -32,16 +29,12 @@ const QuestionList = (props) => {
   
   
   const Like = (ID) => {
-    const server1 = process.env.NODE_ENV === "production"
-    ? "https://pecquora-backend.herokuapp.com/api/all-answers/likes" : "http://localhost:5000/api/all-answers/likes";
-    
-    const url = server1;
 
     const data = new FormData();
     data.append("id", ID);
 
     axios
-      .post(`/api/answers/likes/${questionID}/`, data, { withCredentials: true })
+      .post(`https://pecquora-akshayrr1027.herokuapp.com/api/answers/likes/${questionID}/`, data, { withCredentials: true })
       .then((response) => {
         console.log(response);
       })
@@ -62,7 +55,7 @@ const QuestionList = (props) => {
         <div className="QuestionList">
           {answers && (
             <div className="Questions">
-            { answers.map((answer) => {
+            { [answers].map((answer) => {
                 return (
                 <div className="question" key={answer._id}>
                     <div className="question__profile">

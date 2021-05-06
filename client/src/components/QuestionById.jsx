@@ -15,7 +15,7 @@ const QuestionById = (props) => {
   useEffect(() => {
 
     axios
-    .get(`/questions/${questionID}/`, { withCredentials:true })
+    .get(`https://pecquora-akshayrr1027.herokuapp.com/questions/${questionID}/`, { withCredentials:true })
     .then((response) => {
       setQuestion(response.data);
     })
@@ -31,7 +31,7 @@ const QuestionById = (props) => {
     data.append("id", ID);
 
     axios
-      .post("/api/all-question/likes", data, { withCredentials: true })
+      .post("https://pecquora-akshayrr1027.herokuapp.com/api/all-question/likes", data, { withCredentials: true })
       .then((response) => {
         console.log(response);
       })

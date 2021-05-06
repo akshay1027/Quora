@@ -26,7 +26,7 @@ const App = () =>  {
   useEffect(()=>{
 
     axios
-        .get("/isLoggedIn", {withCredentials: true})
+        .get("https://pecquora-akshayrr1027.herokuapp.com/isLoggedIn", {withCredentials: true})
         .then((response)=>{
             setAuthStatus(response.data.authStatus);
             setProfileImage(response.data.profileImage);

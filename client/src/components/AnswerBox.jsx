@@ -15,7 +15,7 @@ const AnswerBox = ({questionID, profileImage, authStatus, username}) => {
         form_data.append("comments", answer);
         
         try {
-        const response = await axios.post(`/api/send-answer/${questionID}/`, form_data, {
+        const response = await axios.post(`https://pecquora-akshayrr1027.herokuapp.com/api/send-answer/${questionID}/`, form_data, {
             withCredentials: true,
         });
         
