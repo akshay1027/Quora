@@ -18,7 +18,7 @@
     "react-scripts": "4.0.1",
     "web-vitals": "^0.2.4"
   },
-  "proxy": "https://pecquora-backend.herokuapp.com/",
+  "proxy": "https://pecquora-akshayrr1027.herokuapp.com/",
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
