@@ -40,7 +40,7 @@ const QuestionList = () => {
     <div className="QuestionList">
       {questions && (
         <div className="Questions">
-          {questions.map((question) => {
+          {[questions].map((question) => {
             return (
               <div className="question" key={question._id}>
                 <div className="question__profile">
