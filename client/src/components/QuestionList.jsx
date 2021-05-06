@@ -18,10 +18,6 @@ const QuestionList = () => {
         console.log(response);
         setQuestions(response.data);
       })
-      .catch((error) => {
-        console.error(error);
-      }); 
-    
   });
   
   const Like = (ID) => {
