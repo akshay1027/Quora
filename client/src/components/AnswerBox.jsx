@@ -6,7 +6,7 @@ import Avatar from "@material-ui/core/Avatar";
 import axios from "../helper/axioshelper";
 import "../StyleSheet/QuestionBox.css";
 
-const AnswerBox = ({profileImage, authStatus, questionID}) => {
+const AnswerBox = ({questionID, profileImage, authStatus, username}) => {
     
     const [answer, setAnswer] = useState("");
     
@@ -31,7 +31,10 @@ const AnswerBox = ({profileImage, authStatus, questionID}) => {
             <div className="questionBox_user">
                 <Avatar src={profileImage} 
                 alt="user profile" />
-                <h4 className="user_username">Akshay</h4>
+                { authStatus === true ? 
+                <h4 className="user_username">{username}</h4> :
+                <h4 className="user_username">No username yet(login)</h4>
+                }
             </div>
             
             <div className="QuestionBox_inputField">

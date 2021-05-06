@@ -11,7 +11,6 @@ const QuestionById = (props) => {
   const [question, setQuestion] = useState('');
   
   const questionID = props.questionID; // question id from url
-  const profileImage = props.profileImage;
 
   useEffect(() => {
 
@@ -51,13 +50,13 @@ const QuestionById = (props) => {
 
   return (
     
-    <div className="QuestionList">
+    <div className="QuestionList" style={{marginTop:"-5rem"}}>
       {question && (
         <div className="Questions">
         <div className="question" key={question._id}>
         <div className="question__profile">
-          <Avatar src={profileImage} alt="User Profile" />
-          <h4>{question.owner}</h4>
+          <Avatar src={question.owner_image} alt="User Profile" />
+          <h4>{question.owner}</h4> 
         </div>
         <div className="question__info">
           <div className="question__question">

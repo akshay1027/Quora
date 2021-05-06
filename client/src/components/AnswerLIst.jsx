@@ -78,11 +78,6 @@ const QuestionList = (props) => {
                           <ThumbUpIcon onClick={() => Like(answer._id)} />
                           <h4>{answer.upvotes}</h4>
                         </div>
-                        <Link style ={{textDecoration: "none", color: "white"}}> 
-                        <div className="comments" style={{ cursor: "pointer", textDecoration: "none" }}>
-                          <ChatIcon />
-                        </div> 
-                        </Link>
                       </div>
                     </div>
                   </div>
