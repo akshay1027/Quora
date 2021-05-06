@@ -9,11 +9,16 @@ import { Link } from 'react-router-dom';
 
 const QuestionList = () => {
   const [questions, setQuestions] = useState([]);
+  
+  const url1 =
+  process.env.NODE_ENV === "production"
+    ? "https://pecquora-akshayrr1027.herokuapp.com/api/all-questions"
+    : "http://localhost:5001/api/all-questions";
 
   useEffect(() => {
 
     axios
-      .get("https://cors-anywhere.herokuapp.com/https://pecquora-akshayrr1027.herokuapp.com/api/all-questions", { withCredentials:true })
+      .get(url1 , { withCredentials:true })
       .then((response) => {
         console.log(response);
         setQuestions(response.data);
@@ -22,7 +27,7 @@ const QuestionList = () => {
   });
   
   const Like = (ID) => {
-    const url = "https://pecquora-akshayrr1027.herokuapp.com/api/likes";
+    const url = "/api/likes";
 
     const data = new FormData();
     data.append("id", ID);
@@ -41,7 +46,7 @@ const QuestionList = () => {
     <div className="QuestionList">
       {questions && (
         <div className="Questions">
-          {[questions].map((question) => {
+          {questions.map((question) => {
             return (
               <div className="question" key={question._id}>
                 <div className="question__profile">
@@ -52,7 +57,8 @@ const QuestionList = () => {
                   <div className="question__question">
                     <h4>{question.question}</h4>
                   </div>
-                  <div className="question__stats">
+                </div>
+                <div className="question__stats">
                     <div className="likes" style={{ cursor: "pointer" }}>
                       <ThumbUpIcon onClick={() => Like(question._id)} />
                       <h4>{question.upvotes}</h4>
@@ -64,7 +70,6 @@ const QuestionList = () => {
                     </div>
                     </Link>
                   </div>
-                </div>
               </div>
             );
           }).reverse()}
