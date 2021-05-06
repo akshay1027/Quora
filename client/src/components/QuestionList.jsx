@@ -13,7 +13,7 @@ const QuestionList = () => {
   useEffect(() => {
 
     axios
-      .get("https://pecquora-akshayrr1027.herokuapp.com/api/all-questions", { withCredentials:true })
+      .get("https://cors-anywhere.herokuapp.com/https://pecquora-akshayrr1027.herokuapp.com/api/all-questions", { withCredentials:true })
       .then((response) => {
         console.log(response);
         setQuestions(response.data);
