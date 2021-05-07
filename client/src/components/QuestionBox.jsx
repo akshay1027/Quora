@@ -3,23 +3,16 @@ import Avatar from "@material-ui/core/Avatar";
 import axios from "../helper/axioshelper";
 import "../StyleSheet/QuestionBox.css";
 
-const QuestionBox = ({profileImage, authStatus}) => {
+const QuestionBox = ({profileImage, authStatus, username}) => {
     
     const [question, setQuestion] = useState("");
     
     const AskQuestion = async () => {
         const form_data = new FormData();
         form_data.append("question", question);
-
-        const server1 = process.env.NODE_ENV === "production"
-         ? "https://pecquora-backend.herokuapp.com/api/ask-question/" : "http://localhost:5000/api/ask-question/";
-    
-         const url = server1;
-        
-       
-        
+     
         try {
-        const response = await axios.post("/api/ask-question", form_data, {
+        const response = await axios.post("https://pecquora-akshayrr1027.herokuapp.com/api/ask-question", form_data, {
             withCredentials: true,
         });
         
@@ -35,7 +28,10 @@ const QuestionBox = ({profileImage, authStatus}) => {
             <div className="questionBox_user">
                 <Avatar src={profileImage} 
                 alt="user profile" />
-                <h4 className="user_username">Akshay</h4>
+                { authStatus === true ? 
+                <h4 className="user_username">{username}</h4> :
+                <h4 className="user_username">No username yet! (login)</h4>
+                }
             </div>
             
             <div className="QuestionBox_inputField">

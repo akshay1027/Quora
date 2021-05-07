@@ -9,52 +9,20 @@ import { Link } from 'react-router-dom';
 
 const QuestionList = () => {
   const [questions, setQuestions] = useState([]);
-
-
-  /*
-    useEffect(() => {
-      const pusher = new Pusher('5bb1120da3668b56421f', {
-          cluster: 'mt1'
-      });
   
-      const channel = pusher.subscribe('questions');
-      channel.bind('insertion', (data)=> {
-        alert(JSON.stringify(data));
-      });
-
-    return () => {
-      channel.unbind_all();
-      channel.unsubscribe();
-    };
-  }, [questions]);
-  */
+  const url1 =
+  process.env.NODE_ENV === "production"
+    ? "https://pecquora-akshayrr1027.herokuapp.com/api/all-questions"
+    : "http://localhost:5001/api/all-questions";
 
   useEffect(() => {
-    const server1 = process.env.NODE_ENV === "production"
-    ? "https://pecquora-backend.herokuapp.com/api/all-questions" : "http://localhost:5000/api/all-questions";
 
-    const url = server1;
-
-    
-    /*const init = async () => {
-
-        // get http request using axios
-  
-        let res = await axios.get(url);
-        res = await res.data;
-        setQuestions(res);
-      };
-      init();
-     */
-    
     axios
-      .get("/api/all-questions", { withCredentials:true })
+      .get(url1 , { withCredentials:true })
       .then((response) => {
+        console.log(response);
         setQuestions(response.data);
-      })
-      .catch((error) => {
-        console.error(error);
-      }); 
+      });
     
   });
   
@@ -74,11 +42,6 @@ const QuestionList = () => {
       });
   };
   
-  //const QuestionID = (ID) => {
-    //
-   
-  //}
-
   return (
     <div className="QuestionList">
       {questions && (
@@ -94,19 +57,19 @@ const QuestionList = () => {
                   <div className="question__question">
                     <h4>{question.question}</h4>
                   </div>
-                  <div className="question__stats">
+                </div>
+                <div className="question__stats">
                     <div className="likes" style={{ cursor: "pointer" }}>
                       <ThumbUpIcon onClick={() => Like(question._id)} />
                       <h4>{question.upvotes}</h4>
                     </div>
-                    <Link className="comments" style ={{textDecoration: "none", color: "white"}}to= {`/questions/${question._id}`} /*onClick={()=> QuestionID(question._id)}*/ 
+                    <Link className="comments" style ={{textDecoration: "none", color: "white"}} to= {`/questions/${question._id}`} /*onClick={()=> QuestionID(question._id)}*/ 
                     > {/* to redirect user to /answer page */}
                     <div className="comments" style={{ cursor: "pointer", textDecoration: "none" }}>
                       <ChatIcon />
                     </div>
                     </Link>
                   </div>
-                </div>
               </div>
             );
           }).reverse()}
