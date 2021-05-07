@@ -1,33 +1,32 @@
-import express from "express";
-import mongoose, { mongo } from "mongoose";
-const cors = require("cors");
-import dotenv from "dotenv";
-import expressSession from "express-session";
-import MongoStore from "connect-mongodb-session";
-import AuthRoute from "./Routes/AuthRoute";
-import QuestionRoute from "./Routes/QuestionRoute";
-import AnswerRoute from "./Routes/AnswerRoute";
+const express = require("express") ;
+const mongoose = require("mongoose") ;
+const cors =  require("cors");
+const dotenv = require("dotenv") ;
+const AuthRoute = require("./Routes/AuthRoute") ;
+const QuestionRoute = require( "./Routes/QuestionRoute");
 const logger = require("morgan");
+const cookieParser = require("cookie-parser")
 
 dotenv.config();
 
 const app = express();
 
+app.use(cookieParser());
+
 //================middleware==========
 
-//cors
-
-const server1 = process.env.NODE_ENV === "production"
-        ? "https://pecquora-akshayrr.vercel.app/" : "http://localhost:3000/";
-
-app.use(cors({}));
+app.use(cors());
 
 app.use(logger("dev"));
 
-//database to store session
-
-const mongoStore = MongoStore(expressSession);
 const mongoURI = process.env.mongoURI;
+
+//database to store session 
+//( this uses session for handling auth, but its not working in prod
+// So migrating to token based cookie) 
+
+/* 
+const mongoStore = MongoStore(expressSession);
 const store = new mongoStore({
     collection:"usersessions",
     uri:mongoURI,
@@ -52,9 +51,9 @@ app.use(expressSession({
         httpOnly:true,
         secure:process.env.NODE_ENV==="production",
         maxAge:7 * 60 * 60 * 24 * 1000,
-        sameSite:false,
+        sameSite:true,
     }
-}))
+})) */
 
 // secret is password that only me and my server will know.
 // its important to store it in dotenv(best practises).
@@ -67,6 +66,7 @@ const mongoDB_connectionOptions ={
     useNewUrlParser: true,
     useUnifiedTopology: true,
     useCreateIndex: true,
+    useFindAndModify: false
 }
 
 mongoose.connect(mongoURI, mongoDB_connectionOptions, (error) => {
@@ -77,21 +77,26 @@ mongoose.connect(mongoURI, mongoDB_connectionOptions, (error) => {
     console.log("mongoDB working succesfully");
 });
 
-
 //=========================================End-points====================================
+
 
 app.use(AuthRoute);
 app.use(QuestionRoute);
-app.use(AnswerRoute);
 
-app.get("/", function (req, res) {
-  res.send("hello from server bro");
-});
+
+
+//========================= serve frontend file ========================================
+
+if(process.env.NODE_ENV == 'production') {
+    app.use(express.static("client/build"));
+}
 
 //==========================================Express cofig======================================================
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 5001;
 
 app.listen(PORT, ()=>{
     console.log(`server started at PORT ${PORT}`);
 })
    
+
+//  "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build --prefix client"

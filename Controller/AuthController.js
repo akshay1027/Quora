@@ -1,9 +1,9 @@
-import dotenv from 'dotenv';	
-import formidable from 'formidable';	
-import Cloudinary from 'cloudinary';	
-import {userModel} from "../Model/Users";	
-import {userSessions} from "../Model/UserSessions";	
-import Bcrypt from "bcrypt";	
+const dotenv = require('dotenv');	
+const formidable = require('formidable');	
+const Cloudinary = require('cloudinary');	
+const userModel = require("../Model/Users");	
+const Bcrypt = require("bcrypt");	
+const jwt = require('jsonwebtoken');
 
 dotenv.config();	
 
@@ -16,15 +16,11 @@ cloudinary.config ({
     api_secret: process.env.api_secret,	
 });	
 
-//--------------------class method to follow OOPs-------------------	
-
-class AuthController{	
-
 
     //============================================signup logic=========================================	
 
 
-    SignUp(request,response) {	
+    const SignUp = (request,response) => {	
 
         const form = new formidable.IncomingForm();	
 
@@ -142,7 +138,7 @@ class AuthController{
        6) catch method 	
     */	
 
-    Login(request,response){	
+    const Login = (request,response) => {	
 
         // getting data using formidable	
 
@@ -185,44 +181,42 @@ class AuthController{
 
                 const hashedPassword = isUserExisting.password;	
                 const isPasswordValid = await Bcrypt.compare(password, hashedPassword);	
+	            
+                const token =  await isUserExisting.generateAuthToken();//calling function from userschema
+   
+            
+       
+                response.cookie("jwtoken", token, { //takes name:string and value:string(this value comes from userschema )
+                   expires: new Date(Date.now() + 25892000000),
+                   httpOnly: true  //for secure connection 
+                })
 
                 if(!isPasswordValid) {	
                     return response	
                         .status(400)	
-                        .json({msg:"Invalid/Wrong password"})	
+                        .json({msg:"Invalid credentials"})	
                 }	
 
-                // check if this username has session already	
-                // because we dont want to create another session	
-                /*	
-                   express session structure Eg:	
-                   {	
-                       expires:'',	
-                       session:{	
-                           cookie,	
-                           user:{username}	
-                       }	
-                   }	
-                    	
-                   use above eg to find users session by using findOne	
-                */	
-                const isUserSessionExisting = await userSessions.findOne({username: username})	
+                else {
+                    response.json({ msg: "user signin sucessfully" })
+                }
+                // const isrootUserExisting = await rootUsers.findOne({username: username})	
 
-                if(isUserSessionExisting){	
-                    return response	
-                        .status(200)	
-                        .json({msg:"Already signed in"})	
-                }	
+                // if(isrootUserExisting){	
+                //     return response	
+                //         .status(200)	
+                //         .json({msg:"Already signed in"})	
+                // }	
 
-                // when user doesnot have session	
+                //  when user doesnot have session	
 
-                request.session.user = {	
-                    username: isUserExisting.username,	
-                    id: isUserExisting._id,	
-                    profileImage: isUserExisting.profileImage,	
-                  };	
+                // request.session.user = {	
+                //     username: isUserExisting.username,	
+                //     id: isUserExisting._id,	
+                //     profileImage: isUserExisting.profileImage,	
+                //   };	
 
-                response.status(200).send(request.session)	
+                // response.status(200).send(request.session)	
 
         }); // close formidable 	
 
@@ -238,26 +232,34 @@ class AuthController{
     //===============================================is logged in========================================================	
 
 
-    isLoggedIn(request, response) {	
-        const userSession = request.session || false;	
-
+    let isLoggedIn = async (request, response) => {	
+        const token = request.cookies.jwtoken;
+        const verifyToken=jwt.verify(token,process.env.SECRET_KEY);
+        
+        const rootUser= await userModel.findOne({_id:verifyToken._id,"tokens.token":token})//we acess token in mongo DB from tokens.token
+        console.log(rootUser);
         try {	
-          if (userSession) {	
+          if (rootUser) {	
             return response	
               .status(200)	
               .json({	
                 authStatus: true,	
-                profileImage: userSession.user.profileImage,	
+                profileImage: rootUser.profileImage,
+                username: rootUser.username,
               });	
           }	
 
-          return response.status(200).json({ auth_status: false });	
+          return response.status(200).json({ authStatus: false });	
         } catch (error) {	
           return response.status(500, {	
             msg: "Server Error: Server currently down try again later",	
           });	
         }	
       }	
-}	
 
-export default AuthController; 
+
+      module.exports = {
+        SignUp,
+        Login,
+        isLoggedIn,
+      };

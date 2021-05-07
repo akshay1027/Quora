@@ -10,15 +10,10 @@ import { Link } from 'react-router-dom';
 const QuestionList = () => {
   const [questions, setQuestions] = useState([]);
   
-  const url1 =
-  process.env.NODE_ENV === "production"
-    ? "https://pecquora-akshayrr1027.herokuapp.com/api/all-questions"
-    : "http://localhost:5001/api/all-questions";
-
   useEffect(() => {
 
     axios
-      .get(url1 , { withCredentials:true })
+      .get("/api/all-questions", { withCredentials:true })
       .then((response) => {
         console.log(response);
         setQuestions(response.data);

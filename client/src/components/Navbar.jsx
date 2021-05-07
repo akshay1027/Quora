@@ -1,9 +1,7 @@
 import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
 import MenuIcon from '@material-ui/icons/Menu';
-import CloseIcon from '@material-ui/icons/Close';
 import "../StyleSheet/NavBar.css";
-import "../StyleSheet/Header.css";
 
 function NavBar() {
   const [click, setClick] = useState(false);

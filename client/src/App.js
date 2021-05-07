@@ -9,6 +9,7 @@ import QuesstionList from "./components/QuestionList";
 import axios from "axios"
 import QuestionScreen from "./components/QuestionScreen";
 import Background from "./components/Background";
+import About from "./components/about";
 
 // use callbacks instead of "function App()"
 
@@ -24,9 +25,8 @@ const App = () =>  {
   // whenever anything happens in the "App", useEffect is triggered.
 
   useEffect(()=>{
-
     axios
-        .get("https://pecquora-akshayrr1027.herokuapp.com/isLoggedIn", {withCredentials: true})
+        .get("/isLoggedIn", {withCredentials: true})
         .then((response)=>{
             setAuthStatus(response.data.authStatus);
             setProfileImage(response.data.profileImage);
@@ -35,7 +35,7 @@ const App = () =>  {
         .catch((error)=>{
             console.log(error);
         });
-  }, []);
+  });
 
   return (
     <Router className="App">
@@ -53,6 +53,10 @@ const App = () =>  {
             <QuestionScreen authStatus={authStatus} profileImage={profileImage} username={username}
                 {...props} />
             )} exact />
+
+          <Route path="/about">
+            <About />
+          </Route>
         
           <Route path="/">
             <div style={{background:"rgba(25, 28, 31)"}}>

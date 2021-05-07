@@ -1,10 +1,19 @@
-import express from "express";
-import authController from "../Controller/AuthController";
+const express = require('express');
+const {
+    SignUp,
+    Login,
+    isLoggedIn,
+} = require('../Controller/AuthController');
 
 const router = express.Router();
-const AuthController = new authController();
 
-router.post("/signup", (request, response) => {
+router.post('/signup', SignUp);
+
+router.post('/signin', Login);
+
+router.get('/isLoggedIn', isLoggedIn);
+
+/*router.post("/signup", (request, response) => {
   AuthController.SignUp(request, response);
 });
 
@@ -14,6 +23,6 @@ router.post("/signin", (request, response) => {
 
 router.get("/isLoggedIn", (request, response) => {
   AuthController.isLoggedIn(request, response);
-});
+});*/
 
-export default router;
+module.exports = router;

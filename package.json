@@ -7,21 +7,19 @@
   "author": "akshay1027 <akshayar1027@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "start": "babel-node server.js",
-    "dev": "nodemon --exec babel-node server.js"
+    "start": "node server.js",
+    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build --prefix client"
   },
   "dependencies": {
-    "@babel/core": "^7.12.9",
-    "@babel/node": "^7.12.6",
-    "@babel/preset-env": "^7.12.7",
     "bcrypt": "^5.0.0",
     "cloudinary": "^1.23.0",
-    "connect-mongodb-session": "^2.4.1",
+    "cookie-parser": "^1.4.5",
     "cors": "^2.8.5",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
-    "express-session": "^1.17.1",
+    "express-rate-limit": "^5.2.6",
     "formidable": "^1.2.2",
+    "jsonwebtoken": "^8.5.1",
     "mongoose": "^5.11.10",
     "morgan": "^1.10.0"
   },

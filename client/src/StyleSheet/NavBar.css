@@ -3,7 +3,7 @@
   --background2: rgba(13, 18, 26, 0.94);
   --backgroundforapp: rgb(18, 20, 22);
   --textcolour: rgb(237, 229, 229);
-  --secondarycolor: #10f89f;
+  --secondarycolor: #3cd097;
   --navbarcolor: #f5b921;
   --navbarhovercolor: #ffdd41;
 }
@@ -19,7 +19,7 @@
   top: 0;
   z-index: 20;
   box-shadow: 0 4px 8px 0 rgba(253, 251, 251, 0.2),
-    0 6px 10px 0 rgba(196, 168, 168, 0.844);
+    0 2px 6px 0 rgba(196, 168, 168, 0.844);
 }
 
 .nav-container {
