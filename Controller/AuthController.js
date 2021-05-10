@@ -35,13 +35,14 @@ cloudinary.config ({
                 }	
 
                 //destructure incoming data	
+                console.log(fields);
 
-                const { username, password } = fields;	
+                const { username, password, gmail, department, gistAbout, linkedin } = fields;	
                 const { image } = files;	
 
                 //required + validation 	
 
-                if(!username || !password ||!image) {	
+                if(!username || !password ||!image ||!gmail ||!department) {	
                     return response	
                         .status(400)	
                         .json({ msg:"All fields are required"});	
@@ -69,13 +70,14 @@ cloudinary.config ({
 
                 //upload image to cloudinary to get url of the image	
 
-                cloudinary.uploader.upload(image.path, {folder:`/pecquora/profileimage/${username}`}, async (error,results)=>{	
+                cloudinary.uploader.upload(image.path, {folder:`/pecquora/profileimage/${username}`, width: 100, crop:"scale"}, async (error,results)=>{	
                     if(error){	
                         console.error(error);	
                         return response	
                             .status(500)	
                             .json({ msg:"Image upload error: check your image file type"});	
                     }	
+                    
 
                     // get url of the image if there is no error	
 
@@ -237,7 +239,6 @@ cloudinary.config ({
         const verifyToken=jwt.verify(token,process.env.SECRET_KEY);
         
         const rootUser= await userModel.findOne({_id:verifyToken._id,"tokens.token":token})//we acess token in mongo DB from tokens.token
-        console.log(rootUser);
         try {	
           if (rootUser) {	
             return response	

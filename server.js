@@ -87,9 +87,9 @@ app.use(QuestionRoute);
 
 //========================= serve frontend file ========================================
 
-if(process.env.NODE_ENV == 'production') {
-    app.use(express.static("client/build"));
-}
+// if(process.env.NODE_ENV == 'production') {
+//     app.use(express.static("client/build"));
+// }
 
 //==========================================Express cofig======================================================
 const PORT = process.env.PORT || 5001;

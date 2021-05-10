@@ -3,7 +3,7 @@
   --background2: rgba(13, 18, 26, 0.94);
   --backgroundforapp: rgb(18, 20, 22);
   --textcolour: rgb(237, 229, 229);
-  --secondarycolor: #3cd097;
+  --secondaryCOlor: #10dac1;
   --navbarcolor: #f5b921;
   --navbarhovercolor: #ffdd41;
 }
@@ -32,7 +32,7 @@
 }
 
 .nav-logo {
-  color: var(--secondarycolor);
+  color: var(--secondaryCOlor);
   align-items: center;
   margin-left: 20px;
   cursor: pointer;
@@ -75,12 +75,12 @@
 
 .nav-item:hover:after {
   width: 100%;
-  background: var(--secondarycolor);
+  background: var(--secondaryCOlor);
 }
 
 .nav-item .active {
-  color: var(--secondarycolor);
-  border: 1px solid var(--secondarycolor);
+  color: var(--secondaryCOlor);
+  border: 1px solid var(--secondaryCOlor);
 }
 
 .nav-icon {
@@ -108,7 +108,7 @@
     z-index: 1;
   }
   .nav-item .active {
-    color: var(--secondarycolor);
+    color: var(--secondaryCOlor);
     border: none;
   }
   .nav-links {
@@ -125,6 +125,6 @@
     transform: translate(-100%, 60%);
     font-size: 1.8rem;
     cursor: pointer;
-    color: var(--secondarycolor);
+    color: var(--secondaryCOlor);
   }
 }

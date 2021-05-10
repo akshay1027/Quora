@@ -52,21 +52,22 @@ export default function SignUp() {
     const [password, setPassword] = useState("");
     const [image, setImage] = useState("");
     const history = useHistory();
+
     const SignUpUser = async (e) => {
       e.preventDefault();
-  
+      
       const form_data = new FormData();
       form_data.append("username", username);
       form_data.append("password", password);
       form_data.append("image", image);
-  
+      
       try {
         const response = await axios.post("/signin", form_data, {
           withCredentials: true,
         });
         console.log(response);
         const { data, status } = response;
-  
+         
         if (status === 200) {
           history.push("/");
         }

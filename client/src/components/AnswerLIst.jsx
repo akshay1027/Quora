@@ -27,7 +27,7 @@ const QuestionList = (props) => {
         console.error(error);
       }); 
 
-  });
+  },[]);
   
   
   const Like = (ID) => {

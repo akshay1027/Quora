@@ -4,11 +4,13 @@ import ChatIcon from "@material-ui/icons/Chat";
 import axios from "../helper/axioshelper";
 import Avatar from "@material-ui/core/Avatar";
 import "../StyleSheet/QuestionList.css";
+import "../StyleSheet/QuestionBox.css";
 
 import { Link } from 'react-router-dom';
 
 const QuestionList = () => {
   const [questions, setQuestions] = useState([]);
+  const [search, setSearch] = useState([]);
   
   useEffect(() => {
 
@@ -19,7 +21,7 @@ const QuestionList = () => {
         setQuestions(response.data);
       });
     
-  });
+  }, []);
   
   const Like = (ID) => {
     const url = "/api/likes";
@@ -38,10 +40,29 @@ const QuestionList = () => {
   };
   
   return (
+    <div>
     <div className="QuestionList">
+    <div id="QuestionSearch" style={{marginTop:"20px"}}>
+        <div className="QuestionBox_inputField">
+                <input
+                type="text"
+                placeholder="Search for a question" 
+                className="QuestionBox_inputfield"
+                id="searchBar"
+                onChange={(e) => setSearch(e.target.value)}
+                value={search}
+                />
+            </div>
+        </div>
       {questions && (
         <div className="Questions">
-          {questions.map((question) => {
+          {questions.filter((val) =>{
+              if(search == "") {
+                  return val;
+              } else if (val.question.toLowerCase().includes(search.toLowerCase())) {
+                  return val;
+              }
+          }).map((question) => {
             return (
               <div className="question" key={question._id}>
                 <div className="question__profile">
@@ -70,6 +91,7 @@ const QuestionList = () => {
           }).reverse()}
         </div>
       )}
+    </div>
     </div>
   );
 };

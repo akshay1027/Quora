@@ -3,14 +3,21 @@
   --background2: rgba(13, 18, 26, 0.994);
   --textcolour: rgb(253, 246, 246);
   --secondarycolor: #3cd097;
-  --secondarycolorBlue: #10dab1;
+  --secondarycolorBlue: #10dac1;
+  --secondarycolorDarkerBlue: #10dad7;
+  --secondarycolorPurple: rgb(120, 98, 179);
   --secondarytext: #3cd097;
+}
+
+#about {
+  scroll-behavior: smooth;
 }
 
 .main__content #brand {
   display: flex;
   justify-content: space-evenly;
   font-size: 3rem;
+  margin-top: 5rem;
   background-image: linear-gradient(
     to left,
     var(--secondarycolorBlue) 0%,
@@ -22,7 +29,7 @@
   -webkit-text-fill-color: transparent;
   -moz-text-fill-color: transparent;
   text-transform: uppercase;
-  margin-bottom: 3rem;
+  margin-bottom: 0rem;
   width: 100%;
 }
 
@@ -49,28 +56,26 @@
   background-color: var(--secondarycolorBlue);
   color: black;
   font-weight: 800;
-  border: 2px solid var(--secondarycolorBlue);
 }
 
 .redirect:hover {
-  background-color: rgb(192, 198, 220);
+  background-color: rgb(226, 228, 237);
   color: black;
-  transform: scale(1.05);
 }
 
 .main__content h2 {
-  margin-top: 6rem;
+  margin-top: 5rem;
   font-size: 2rem;
   background: var(--secondarycolorBlue); /* fallback for old browsers */
   background: -webkit-linear-gradient(
     to right,
     var(--secondarycolorBlue),
-    #875dfa
+    #10dae1
   ); /* Chrome 10-25, Safari 5.1-6 */
   background: linear-gradient(
     to right,
     var(--secondarycolorBlue),
-    #9f80f5
+    #10dae1
   ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
   background-size: 100%;
   -webkit-background-clip: text;
@@ -80,7 +85,6 @@
 }
 
 .main-img-container {
-  margin-top: 5rem;
   display: flex;
   flex-direction: row;
   justify-content: space-around;
@@ -88,13 +92,116 @@
 }
 
 .illustration {
+  margin-top: 5rem;
   width: 90%;
   height: fit-content;
 }
-main-img-container .motive {
-  margin-top: -8em;
+
+.illustration2 {
+  width: 80%;
+  height: fit-content;
+}
+
+/* ============= card css begins ================= */
+
+.row {
+  background-color: var(--background1);
+  padding: 20px 4em;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  flex-flow: wrap;
+}
+
+.card {
+  align-items: center;
+  transition: 0.3s;
+  margin: 3px;
+  padding: 0px 30px;
+  color: var(--secondarycolorBlue);
+  font-size: 30px;
+  width: 20%;
+  background: rgb(25, 30, 36);
+  border: 2px solid;
+  margin-bottom: 50px;
+  transition: 0.3s;
+  box-shadow: 0 0 20px -10px var(--secondarycolorBlue);
+}
+
+.card-icon {
+  font-size: 120px !important;
+}
+
+.developer-icon {
+  margin-top: 20px;
+  padding: 0px 13px;
+  font-size: 40px !important;
+}
+
+.developer-icon:hover {
+  transform: scale(1.4);
+}
+
+.card-header {
+  margin-top: 25px;
+  text-align: center;
+  padding: 50px 10px;
+  background: linear-gradient(to right, var(--secondarycolorBlue), #10dae1);
+  color: var(--background1);
+}
+
+.card-body {
+  padding: 30px 20px;
   font-size: 20px;
 }
+
+.card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 40px -10px var(--secondarycolorBlue);
+}
+
+@media screen and (max-width: 1000px) {
+  .card {
+    width: 35%;
+  }
+}
+
+@media (max-width: 777px) {
+  .row {
+    padding: 20px 1.5em;
+  }
+}
+
+@media screen and (max-width: 633px) {
+  .heading {
+    padding: 20px;
+    font-size: 20px;
+  }
+
+  .card {
+    width: 70%;
+  }
+
+  .main__content h2 {
+    margin-top: 5rem;
+    font-size: 2rem;
+    background: var(--secondarycolorBlue); /* fallback for old browsers */
+    background: -webkit-linear-gradient(
+      to right,
+      var(--secondarycolorBlue),
+      #10dae1
+    ); /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, var(--secondarycolorBlue), #10dae1);
+    background-size: 100%;
+    -webkit-background-clip: text;
+    -moz-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    -moz-text-fill-color: transparent;
+  }
+}
+
+/* ============= card css over ================= */
+
 @media (max-width: 480px) {
   #brand {
     margin-top: 40px;
@@ -115,26 +222,16 @@ main-img-container .motive {
     padding: 10px !important;
     font-size: 1.6rem;
   }
-
-  .motive-top {
-    margin-top: -60px !important;
-  }
-  .motive {
-    margin-top: -78px !important;
-  }
 }
 
-@media (max-width: 480px) {
-  .motive-top {
-    margin-top: -60px !important;
+@media (max-width: 421px) {
+  .row {
+    padding: 20px 1.5em;
   }
-  .motive {
-    margin-top: -90px !important;
-
-    font: 100;
-  }
-  .motive h2 {
-    font-size: 25px;
+}
+@media (max-width: 945px) and (min-width: 737px) {
+  #hero {
+    margin-left: 8rem;
   }
 }
 

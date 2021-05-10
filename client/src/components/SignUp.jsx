@@ -52,6 +52,11 @@ export default function SignUp() {
 
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
+    const [gmail, setGmail] = useState(""); 
+    const [department, setDepartment] = useState("");
+    const [yearPassout, setYearPassout] = useState(""); 
+    const [gistAbout, setGistAbout] = useState("");
+    const [linkedin, setLinkedin] = useState("");
     const [image, setImage] = useState("");
     const history = useHistory(); // Hook to re-direct user
     const SignUpUser = async (e) => {
@@ -66,6 +71,11 @@ export default function SignUp() {
       const form_data = new FormData();
       form_data.append("username", username);
       form_data.append("password", password);
+      form_data.append("gmail", gmail);
+      form_data.append("department",department);
+      form_data.append("yearPassout", yearPassout);
+      form_data.append("gistAbout", gistAbout);
+      form_data.append("linkedin", linkedin);
       form_data.append("image", image);
 
       try {
@@ -120,7 +130,6 @@ export default function SignUp() {
             name="username"
             autoComplete="username"
             autoFocus
-            //state management. By setting "setUsername" as entered value, we can send it through props and use "username" in other files.
             onChange={(e) => setUsername(e.target.value)}
           />
           <TextField
@@ -135,6 +144,64 @@ export default function SignUp() {
             autoComplete="current-password"
             //state management. By setting "setPassword" as entered value, we can send it through props and use "password" in other files.
             onChange={(e) => setPassword(e.target.value)}
+          />
+            <TextField
+            variant="outlined"
+            margin="normal"
+            required
+            fullWidth
+            id="gmail"
+            label="gmail"
+            name="gmail"
+            autoComplete="gamil"
+            autoFocus
+            onChange={(e) => setGmail(e.target.value)}
+          />
+                  <TextField
+            variant="outlined"
+            margin="normal"
+            fullWidth
+            id="linkedin"
+            label="linkedin"
+            name="linkedin"
+            autoComplete="username"
+            autoFocus
+            onChange={(e) => setLinkedin(e.target.value)}
+          />
+                  <TextField
+            variant="outlined"
+            margin="normal"
+            required
+            fullWidth
+            id="yearPassout"
+            label="Year of Passout. Eg: PEC 2023"
+            name="yearPassout"
+            autoComplete="yearPassout"
+            autoFocus
+            onChange={(e) => setYearPassout(e.target.value)}
+          />
+                  <TextField
+            variant="outlined"
+            margin="normal"
+            required
+            fullWidth
+            id="department"
+            label="Dept: ECE, CSE, IT, EI, EEE, CI, ME"
+            name="department"
+            autoComplete="department"
+            autoFocus
+            onChange={(e) => setDepartment(e.target.value)}
+          />
+                  <TextField
+            variant="outlined"
+            margin="normal"
+            fullWidth
+            id="gistAbout"
+            label="Gist About yourself"
+            name="gistAbout"
+            autoComplete="gistAbout"
+            autoFocus
+            onChange={(e) => setGistAbout(e.target.value)}
           />
           <label style={{marginRight:"5px", fontWeight:"700"}}>Select Profile Image:</label>
           <input type="file" onChange={(e) => setImage(e.target.files[0])} />

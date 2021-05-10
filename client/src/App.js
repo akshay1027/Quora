@@ -54,16 +54,16 @@ const App = () =>  {
                 {...props} />
             )} exact />
 
-          <Route path="/about">
-            <About />
-          </Route>
-        
-          <Route path="/">
-            <div style={{background:"rgba(25, 28, 31)"}}>
+          <Route path="/quora">
+          <div style={{background:"rgba(25, 28, 31)"}}>
             <Background />
             <QuestionBox authStatus={authStatus} profileImage={profileImage} username={username}/>
             <QuesstionList />
             </div>
+          </Route>
+        
+          <Route path="/">
+          <About />
           </Route>
 
           </Switch>

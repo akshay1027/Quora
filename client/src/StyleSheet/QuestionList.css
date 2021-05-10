@@ -4,13 +4,27 @@
   --backgroundforapp: rgb(18, 20, 22);
   --backgroundAppJs: rgba(25, 28, 31);
   --textcolour: rgb(237, 229, 229);
-  --secondarycolor: #3cd097;
+  --secondaryCOlor: #10dac1;
 }
 
 .Questions {
   display: flex;
   flex-direction: column;
   margin-top: 5rem;
+}
+
+#searchBar {
+  width: 250px;
+  padding: 15px;
+  margin-bottom: 0;
+}
+
+#QuestionSearch {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: -3rem;
 }
 
 .question {
@@ -26,7 +40,6 @@
 }
 .question:hover {
   box-shadow: rgba(119, 98, 179, 0.878) 0px 1px 15px 0px;
-  z-index: 9;
   transform: scale(1.05);
   transition: all 1s;
 }
@@ -36,7 +49,7 @@
   display: flex;
   align-items: center;
   margin-bottom: 1rem;
-  color: var(--secondarycolor);
+  color: var(--secondaryCOlor);
 }
 
 .question__profile > h4 {
@@ -74,9 +87,9 @@
 }
 
 .likes:hover {
-  color: var(--secondarycolor);
+  color: var(--secondaryCOlor);
 }
 
 .comments:hover {
-  color: var(--secondarycolor);
+  color: var(--secondaryCOlor);
 }

@@ -30,12 +30,12 @@ function NavBar() {
             <li className="nav-item">
               <NavLink
                 exact
-                to="/about"
+                to="/quora"
                 activeClassName="active"
                 className="nav-links"
                 onClick={handleClick}
               >
-                About Us
+                Quora
               </NavLink>
             </li>
             <li className="nav-item">
