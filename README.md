@@ -31,7 +31,7 @@ The main features of the website are “PEC Quora” and “PEC Connect”, The 
 - **Project Management Tools**:   
 - <img alt="postman" src="https://img.shields.io/badge/Postman%20-%23026AA7.svg?&style=for-the-badge&logo=Postman&logoColor=white"/> <img alt="GitHub" src="https://img.shields.io/badge/github%20-%23121011.svg?&style=for-the-badge&logo=github&logoColor=white"/> <img alt="Git" src="https://img.shields.io/badge/git%20-%23F05033.svg?&style=for-the-badge&logo=git&logoColor=white"/> <img alt="Markdown" src="https://img.shields.io/badge/markdown-%23000000.svg?&style=for-the-badge&logo=markdown&logoColor=white"/> ![Skill](https://img.shields.io/badge/Yarn-2C8EBB?style=for-the-badge&logo=yarn&logoColor=white)
 
-## Project Creator 📆
+## Project Creator 👐🏻
 
 <td align="center"><img src="https://avatars.githubusercontent.com/u/65683151?s=400&u=fcfad8b07092211b1f7f2cebd7e2b48e7d71a469&v=4" width="100px;" alt=""/> 
 	<b>Akshay R R</b>
