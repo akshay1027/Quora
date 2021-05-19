@@ -10,12 +10,12 @@ dotenv.config();
 //------------------cloudinary setup-------------------	
 const cloudinary = Cloudinary.v2;	
 
+
 cloudinary.config ({	
     cloud_name: process.env.cloud_name,	
     api_key: process.env.api_key,	
     api_secret: process.env.api_secret,	
 });	
-
 
     //============================================signup logic=========================================	
 
@@ -37,12 +37,12 @@ cloudinary.config ({
                 //destructure incoming data	
                 console.log(fields);
 
-                const { username, password, gmail, department, gistAbout, linkedin } = fields;	
+                const { username, password, gmail, department, yearPassout, gistAbout, linkedin } = fields;	
                 const { image } = files;	
 
                 //required + validation 	
 
-                if(!username || !password ||!image ||!gmail ||!department) {	
+                if(!username || !password ||!image ||!gmail ||!department ||!gistAbout) {	
                     return response	
                         .status(400)	
                         .json({ msg:"All fields are required"});	
@@ -94,7 +94,12 @@ cloudinary.config ({
                     const newUser = new userModel({	
                         username: username,	
                         password: hashedPassword,	
-                        profileImage: image_url	
+                        profileImage: image_url,
+                        gmail: gmail,
+                        department: department,
+                        yearPassout: yearPassout,
+                        gistAbout: gistAbout,
+                        linkedin: linkedin
                     })	
 
                     // everytime you interact with mongoDB, use async await	
@@ -169,6 +174,7 @@ cloudinary.config ({
                         .json({ msg:"All fields are required"});	
                 }	
 
+
                 const isUserExisting = await userModel.findOne({ username: username});	
 
                 // if user doesnot exists, return error	
@@ -234,7 +240,7 @@ cloudinary.config ({
     //===============================================is logged in========================================================	
 
 
-    let isLoggedIn = async (request, response) => {	
+    let isLoggedIn = async (request, response) => {
         const token = request.cookies.jwtoken;
         const verifyToken=jwt.verify(token,process.env.SECRET_KEY);
         
@@ -252,9 +258,10 @@ cloudinary.config ({
 
           return response.status(200).json({ authStatus: false });	
         } catch (error) {	
-          return response.status(500, {	
-            msg: "Server Error: Server currently down try again later",	
-          });	
+        //   return response.status(500, {	
+        //     msg: "Server Error: Server currently down try again later",	
+        //   });	
+        console.error(error);
         }	
       }	
 
