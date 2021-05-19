@@ -4,6 +4,7 @@ const cors =  require("cors");
 const dotenv = require("dotenv") ;
 const AuthRoute = require("./Routes/AuthRoute") ;
 const QuestionRoute = require( "./Routes/QuestionRoute");
+const FindUsersRoute = require( "./Routes/FindUsersRoute");
 const logger = require("morgan");
 const cookieParser = require("cookie-parser")
 
@@ -82,14 +83,15 @@ mongoose.connect(mongoURI, mongoDB_connectionOptions, (error) => {
 
 app.use(AuthRoute);
 app.use(QuestionRoute);
+app.use(FindUsersRoute);
 
 
 
 //========================= serve frontend file ========================================
 
-// if(process.env.NODE_ENV == 'production') {
-//     app.use(express.static("client/build"));
-// }
+if(process.env.NODE_ENV == 'production') {
+    app.use(express.static("client/build"));
+}
 
 //==========================================Express cofig======================================================
 const PORT = process.env.PORT || 5001;
