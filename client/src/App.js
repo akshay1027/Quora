@@ -1,18 +1,39 @@
-import React, {useState, useEffect} from "react";
+import React, {useState, useEffect, Suspense} from "react";
 import './App.css';
-import QuestionBox from "./components/QuestionBox";
-import { BrowserRouter as Router, Switch, Route} from "react-router-dom";
-import SignUp from "./components/SignUp";
-import SignIn from "./components/SignIn";
-import NavBar from "./components/Navbar"
-import QuesstionList from "./components/QuestionList";
 import axios from "axios"
-import QuestionScreen from "./components/QuestionScreen";
-import Background from "./components/Background";
-import About from "./components/about";
+import Preloader from "./screens/preloader";
+import { BrowserRouter as Router, Switch, Route} from "react-router-dom";
+
+const LazyQuestionBox = React.lazy(() => {
+    return new Promise(resolve => {
+      setTimeout(() => resolve(import('./components/QuestionBox')), 4000);
+    });
+  });
+
+  const LazyQuesstionList = React.lazy(() => {
+    return new Promise(resolve => {
+      setTimeout(() => resolve(import('./components/QuestionList')), 4000);
+    });
+  });
+
+  const LazyNavBar = React.lazy(() => {
+    return new Promise(resolve => {
+      setTimeout(() => resolve(import('./components/Navbar')), 4000);
+    });
+  });
+
+  const LazyBackground = React.lazy(() => {
+    return new Promise(resolve => {
+      setTimeout(() => resolve(import('./components/Background')), 4000);
+    });
+  });
+
+const LazySignUp  = React.lazy( () => import("./screens/SignUp"));
+const LazySignIn  = React.lazy( () => import("./screens/SignIn"));
+const LazyQuestionScreen  = React.lazy( () => import("./screens/QuestionScreen"));
+const LazyFind  = React.lazy( () => import("./screens/find"));
 
 // use callbacks instead of "function App()"
-
 
 const App = () =>  {
   
@@ -26,7 +47,7 @@ const App = () =>  {
 
   useEffect(()=>{
     axios
-        .get("/isLoggedIn", {withCredentials: true})
+        .get("/isLoggedIn")
         .then((response)=>{
             setAuthStatus(response.data.authStatus);
             setProfileImage(response.data.profileImage);
@@ -37,36 +58,40 @@ const App = () =>  {
         });
   });
 
-  return (
+//   <div style={{ display: 'flex', justifyContent: 'center',  marginTop:'50px'}}>Loading...</div>
+
+  return ( 
     <Router className="App">
-      <NavBar profileImage={profileImage}/> {/* header will be present in all pages */}
+      <Suspense fallback={<Preloader />}>
+      <LazyNavBar profileImage={profileImage}/> {/* header will be present in all pages */}
          <Switch>
           <Route path="/signin">
-            <SignIn />
+            <LazySignIn />
           </Route>
 
           <Route path="/signup">
-            <SignUp />
+            <LazySignUp />
           </Route>
 
           <Route path="/questions/:id" render={(props) => (  
-            <QuestionScreen authStatus={authStatus} profileImage={profileImage} username={username}
+            <LazyQuestionScreen authStatus={authStatus} profileImage={profileImage} username={username}
                 {...props} />
             )} exact />
 
-          <Route path="/quora">
-          <div style={{background:"rgba(25, 28, 31)"}}>
-            <Background />
-            <QuestionBox authStatus={authStatus} profileImage={profileImage} username={username}/>
-            <QuesstionList />
-            </div>
+          <Route path="/find">
+              <LazyFind />
           </Route>
         
           <Route path="/">
-          <About />
+          <div style={{background:"rgba(25, 28, 31)"}}>
+            <LazyBackground />
+            <LazyQuestionBox authStatus={authStatus} profileImage={profileImage} username={username}/>
+            <LazyQuesstionList />
+          </div>
           </Route>
 
           </Switch>
+          </Suspense>
     </Router>
   );
 } 

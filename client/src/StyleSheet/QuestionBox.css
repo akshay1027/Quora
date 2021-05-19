@@ -33,7 +33,7 @@
   margin-bottom: 2em;
   border: none;
   outline: none;
-  font-weight: 800;
+  font-weight: medium;
   font-size: 15px;
   flex: 1;
   padding: 11px;
@@ -45,7 +45,7 @@
 
 .QuestionBox_inputfield::placeholder {
   font-weight: 100;
-  padding: 4px;
+  padding: 1px;
   background: var(--background2);
   color: rgb(174, 174, 174);
 }
@@ -70,7 +70,7 @@
   align-items: center;
   margin-bottom: 2em;
   outline: none;
-  font-weight: 900;
+  font-weight: 800;
   border: 2px solid var(--secondaryText);
   padding: 1em;
   border-radius: 7px;
@@ -83,8 +83,13 @@
   .QuestionBox__btn {
     padding: 9px;
   }
+  .QuestionBox {
+    font-size: 14px;
+  }
+  .QuestionBox__btn {
+    font-size: 12px;
+  }
 }
 .QuestionBox__btn:hover {
-  color: var(--background2);
-  transform: scale(1.1);
+  background-color: var(--textcolour);
 }

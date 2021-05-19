@@ -4,7 +4,7 @@ import axios from "../helper/axioshelper";
 import "../StyleSheet/QuestionBox.css";
 
 const QuestionBox = ({profileImage, authStatus, username}) => {
-    
+
     const [question, setQuestion] = useState("");
     
     const AskQuestion = async () => {
@@ -12,9 +12,7 @@ const QuestionBox = ({profileImage, authStatus, username}) => {
         form_data.append("question", question);
      
         try {
-        const response = await axios.post("/api/ask-question", form_data, {
-            withCredentials: true,
-        });
+        const response = await axios.post("/api/ask-question", form_data);
         
         alert(response.data.msg);
         } catch (error) {

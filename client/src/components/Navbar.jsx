@@ -1,6 +1,6 @@
 import React, { useState } from "react";
+import MenuIcon from "@material-ui/icons/Menu";
 import { NavLink } from "react-router-dom";
-import MenuIcon from '@material-ui/icons/Menu';
 import "../StyleSheet/NavBar.css";
 
 function NavBar() {
@@ -11,8 +11,8 @@ function NavBar() {
     <>
       <nav className="navbar">
         <div className="nav-container">
-          <NavLink exact to="/" className="nav-logo">
-            Pec Quora
+          <NavLink to="/" className="nav-logo">
+            <em>PEC Forum</em>
           </NavLink>
 
           <ul className={click ? "nav-menu active" : "nav-menu"}>
@@ -24,23 +24,33 @@ function NavBar() {
                 className="nav-links"
                 onClick={handleClick}
               >
-                Home
-              </NavLink>
-            </li>
-            <li className="nav-item">
-              <NavLink
-                exact
-                to="/quora"
-                activeClassName="active"
-                className="nav-links"
-                onClick={handleClick}
-              >
                 Quora
               </NavLink>
             </li>
             <li className="nav-item">
               <NavLink
                 exact
+                to="/find"
+                activeClassName="active"
+                className="nav-links"
+                onClick={handleClick}
+              >
+                Connect
+              </NavLink>
+            </li>
+            <li className="nav-item">
+              <a           
+                href="https://pec-forum-landingpage.netlify.app/"
+                activeClassName="active"
+                className="nav-links"
+                onClick={handleClick}
+              >
+                About
+              </a>
+            </li>
+            <li className="nav-item">
+              <NavLink
+               exact
                 to="/signin"
                 activeClassName="active"
                 className="nav-links"
@@ -57,12 +67,14 @@ function NavBar() {
                 className="nav-links"
                 onClick={handleClick}
               >
-              Sign Up
+                Sign Up
               </NavLink>
             </li>
           </ul>
           <div className="nav-icon" onClick={handleClick}>
-            <i className={click ? "fas fa-times" : "fas fa-bars"}><MenuIcon style={{fontSize: "30px", marginTop:"3px"}}/></i>
+            <i className={click ? "fas fa-times" : "fas fa-bars"}>
+              <MenuIcon style={{ fontSize: "30px", marginTop: "3px" }} />
+            </i>
           </div>
         </div>
       </nav>

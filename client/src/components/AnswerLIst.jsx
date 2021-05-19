@@ -1,4 +1,3 @@
-
 //========= to get data (get request) from backend and display over here ==========
 
 import React, { useState, useEffect } from "react";
@@ -6,8 +5,6 @@ import ThumbUpIcon from "@material-ui/icons/ThumbUp";
 import axios from "../helper/axioshelper";
 import Avatar from "@material-ui/core/Avatar";
 import "../StyleSheet/QuestionList.css";
-
-
 
 const QuestionList = (props) => {
   const [answers, setAnswer] = useState([]);
@@ -18,25 +15,24 @@ const QuestionList = (props) => {
 
   useEffect(() => {
     axios
-      .get(`/api/all-answer/${questionID}/`, { withCredentials:true })
+      .get(`/api/all-answer/${questionID}/`)
       .then((response) => {
         console.log(response.data);
         setAnswer(response.data);
       })
       .catch((error) => {
         console.error(error);
-      }); 
+      });
+  }, []);
 
-  },[]);
-  
-  
   const Like = (ID) => {
-
     const data = new FormData();
     data.append("id", ID);
 
     axios
-      .post(`/api/answers/likes/${questionID}/`, data, { withCredentials: true })
+      .post(`/api/answers/likes/${questionID}/`, data, {
+        withCredentials: true,
+      })
       .then((response) => {
         console.log(response);
       })
@@ -53,43 +49,40 @@ const QuestionList = (props) => {
      5. make get request and display the id!
     */
 
-     return (
-        <div className="QuestionList">
-          { answers && (
-            <div className="Questions">
-            { answers.map((answer) => {
-                return (
+  return (
+    <div className="QuestionList">
+      {answers && (
+        <div className="Questions">
+          {answers
+            .map((answer) => {
+              return (
                 <div className="question" key={answer._id}>
-                    <div className="question__profile">
-                      <Avatar src={answer.owner_image} alt="User Profile" />
-                      <h4>{answer.owner}</h4>
+                  <div className="question__profile">
+                    <Avatar src={answer.owner_image} alt="User Profile" />
+                    <h4>{answer.owner}</h4>
+                  </div>
+                  <div className="question__info">
+                    <div className="question__question">
+                      <h4>{answer.text}</h4>
                     </div>
-                     <div className="question__info">
-                      <div className="question__question">
-                            <h4 >{answer.text}</h4>       
-                      </div>
-                      <div className="question__stats">
-                        <div className="likes" style={{ cursor: "pointer" }}>
-                          <ThumbUpIcon onClick={() => Like(answer._id)} />
-                          <h4>{answer.upvotes}</h4>
-                        </div>
+                    <div className="question__stats">
+                      <div className="likes" style={{ cursor: "pointer" }}>
+                        <ThumbUpIcon onClick={() => Like(answer._id)} />
+                        <h4>{answer.upvotes}</h4>
                       </div>
                     </div>
                   </div>
-                  );
-                }).reverse()}
-            </div>
-            )
-            }
+                </div>
+              );
+            })
+            .reverse()}
         </div>
-      );
-    };
-
+      )}
+    </div>
+  );
+};
 
 export default QuestionList;
-
-
-
 
 /* <div className="QuestionList">
           { answers ? (

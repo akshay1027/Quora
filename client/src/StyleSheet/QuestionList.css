@@ -64,6 +64,7 @@
 .question__question {
   margin-bottom: 1rem;
   padding: 1rem;
+  font-size: 15px;
   color: var(--textcolour);
 }
 
@@ -92,4 +93,13 @@
 
 .comments:hover {
   color: var(--secondaryCOlor);
+}
+
+@media (max-width: 500px) {
+  .question__question {
+    font-size: 13px;
+  }
+  .Questions {
+    font-size: 14px;
+  }
 }

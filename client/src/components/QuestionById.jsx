@@ -15,7 +15,7 @@ const QuestionById = (props) => {
   useEffect(() => {
 
     axios
-    .get(`/questions/${questionID}/`, { withCredentials:true })
+    .get(`/questions/${questionID}/`)
     .then((response) => {
       setQuestion(response.data);
     })
@@ -31,7 +31,7 @@ const QuestionById = (props) => {
     data.append("id", ID);
 
     axios
-      .post("/api/all-question/likes", data, { withCredentials: true })
+      .post("/api/all-question/likes", data)
       .then((response) => {
         console.log(response);
       })
