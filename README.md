@@ -2,7 +2,8 @@
 
 Building An Exclusive Community
 of PEC Graduates and Students.  
-The main features of the website are “PEC Quora” and “PEC Connect”, The objective is to improve awareness of our students about the Industry, give career guidance, connect with Industry experts who are alumni of our institute.  
+The main features of the website are “PEC Quora” and “PEC Connect”, The objective is to improve awareness of our students about the Industry, give career guidance, connect with Industry experts who are alumni of our institute. 
+
 
 
 [![forthebadge](https://forthebadge.com/images/badges/open-source.svg)](https://forthebadge.com)
