@@ -1,16 +1,15 @@
-import React from "react";
+import React from 'react';
 
-  const Header = () => {
-    
+const Header = () => {
     // to get window location!
-    const location = window.location.href;
+    // const location = window.location.href;
 
-    return(
-        <div style={{padding:"2rem"}}>
+    return (
+        <div style={{ padding: '2rem' }}>
 
         </div>
-            
-    )
-}; 
+
+    );
+};
 
 export default Header;

@@ -1,38 +1,38 @@
-import React from "react";
-import AnswerBox from "../components/AnswerBox";
-import QuestionById from "../components/QuestionById";
-import Background from "../components/Background";
-import AnswerList from "../components/AnswerLIst";
+import React from 'react';
+import AnswerBox from '../components/AnswerBox';
+import QuestionById from '../components/QuestionById';
+import Background from '../components/Background';
+import AnswerList from '../components/AnswerLIst';
 
 const QuestionScreen = (props) => {
-  const questionID = props.match.params.id;
-  const authStatus = props.authStatus;
-  const profileImage = props.profileImage;
-  const username = props.username;
+    const questionID = props.match.params.id;
+    const authStatus = props.authStatus;
+    const profileImage = props.profileImage;
+    const username = props.username;
 
-  return (
-    <div style={{ background: "rgba(25, 28, 31)" }}>
-      <Background style={{ padding: "-2rem" }} />
-      <QuestionById
-        style={{ padding: "rem" }}
-        questionID={questionID}
-        profileImage={profileImage}
-        authStatus={authStatus}
-      />
-      <AnswerBox
-        questionID={questionID}
-        profileImage={profileImage}
-        authStatus={authStatus}
-        username={username}
-      />
-      <AnswerList
-        questionID={questionID}
-        profileImage={profileImage}
-        authStatus={authStatus}
-      />
-      <Background />
-    </div>
-  );
+    return (
+        <div style={{ background: 'rgba(25, 28, 31)' }}>
+            <Background style={{ padding: '-2rem' }} />
+            <QuestionById
+                style={{ padding: 'rem' }}
+                questionID={questionID}
+                profileImage={profileImage}
+                authStatus={authStatus}
+            />
+            <AnswerBox
+                questionID={questionID}
+                profileImage={profileImage}
+                authStatus={authStatus}
+                username={username}
+            />
+            <AnswerList
+                questionID={questionID}
+                profileImage={profileImage}
+                authStatus={authStatus}
+            />
+            <Background />
+        </div>
+    );
 };
 
 export default QuestionScreen;
