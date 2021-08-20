@@ -14,7 +14,9 @@ import Typography from '@material-ui/core/Typography';
 
 const Find = () => {
     const [users, setUsers] = useState([]);
-    const [search, setSearch] = useState([]);
+    // const [search, setSearch] = useState([]);
+    // Search has to be string. Imp bug fix
+    const [search, setSearch] = useState('');
     const [filter, setFilter] = useState('');
 
     const handleChange = (event) => {
