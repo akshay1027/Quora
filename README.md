@@ -4,13 +4,6 @@ Building An Exclusive Community
 of PEC Graduates and Students.  
 The main features of the website are “PEC Quora” and “PEC Connect”, The objective is to improve awareness of our students about the Industry, give career guidance, connect with Industry experts who are alumni of our institute.  
 
-
-[![forthebadge](https://forthebadge.com/images/badges/open-source.svg)](https://forthebadge.com)
-[![forthebadge](https://forthebadge.com/images/badges/built-with-love.svg)](https://forthebadge.com)
-[![forthebadge](https://forthebadge.com/images/badges/built-by-developers.svg)](https://forthebadge.com)
-[![forthebadge](https://forthebadge.com/images/badges/makes-people-smile.svg)](https://forthebadge.com)  
-
-
 ![Forks](https://img.shields.io/github/forks/akshay1027/pecquora)
 ![Stars](https://img.shields.io/github/stars/akshay1027/pecquora)
 [![License](https://img.shields.io/github/license/purnima143/Kurakoo)](https://github.com/purnima143/Kurakoo/blob/master/LICENSE)
