@@ -2,8 +2,8 @@ import React, { useState, useEffect, Suspense, lazy } from 'react';
 import './App.css';
 import axios from 'axios';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-import Authentication from './components/authentication';
-import MainAppBar from './components/mainAppBar';
+// import Authentication from './components/authentication';
+// import MainAppBar from './components/mainAppBar';
 import { useAppSelector } from './redux/store';
 import {
     Box, LinearProgress,
@@ -16,8 +16,8 @@ const QuesstionList = lazy(() => import('./components/QuestionList'));
 
 const SignUp = lazy(() => import('./screens/SignUp'));
 const SignIn = lazy(() => import('./screens/SignIn'));
-const AnswerScreen = lazy(() => import('./screens/AnswerScreen'));
-const Find = lazy(() => import('./screens/find'));
+// const AnswerScreen = lazy(() => import('./screens/AnswerScreen'));
+// const Find = lazy(() => import('./screens/find'));
 
 const useStyles = makeStyles((theme) =>
     createStyles({
@@ -58,10 +58,10 @@ const App = () => {
 
     return (
         <Router>
-            <Route path='/' component={Authentication} />
-            <Box display="flex" flexGrow={1} className={ darkTheme ? classes.BackgroundDark : classes.BackgroundLight }>
+            {/* <Route path='/' component={Authentication} /> */}
+            <Box display="flex" flexGrow={1} className={darkTheme ? classes.BackgroundDark : classes.BackgroundLight}>
                 <Box className={classes.toolbar} display="flex" flexDirection="column" flexGrow={1}>
-                    <Route path='/' component={MainAppBar} />
+                    {/* <Route path='/' component={MainAppBar} /> */}
                     {/* <Route path='/' component={Background} /> */}
                     <Suspense fallback={<LinearProgress />}>
                         <Switch>
@@ -73,17 +73,17 @@ const App = () => {
                                 <SignUp />
                             </Route>
                             {/* App Routes */}
-                            <Route path="/questions/:id" render={(children) => (
+                            {/* <Route path="/questions/:id" render={(children) => (
                                 <AnswerScreen authStatus={authStatus} profileImage={profileImage} username={username}
                                     {...children} />
-                            )} exact />
+                            )} exact /> */}
 
-                            <Route path="/find">
+                            {/* <Route path="/find">
                                 <Find />
-                            </Route>
+                            </Route> */}
 
                             <Route path="/">
-                                <QuestionBox authStatus={authStatus} profileImage={profileImage} username={username}/>
+                                <QuestionBox authStatus={authStatus} profileImage={profileImage} username={username} />
                                 <QuesstionList />
                             </Route>
                         </Switch>
