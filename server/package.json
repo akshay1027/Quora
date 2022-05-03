@@ -7,7 +7,7 @@
     "author": "akshay1027 <akshayar1027@gmail.com>",
     "license": "MIT",
     "scripts": {
-        "start": "node server.js",
+        "start": "nodemon server.js",
         "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build --prefix client"
     },
     "dependencies": {
